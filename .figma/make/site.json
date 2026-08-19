@@ -1,0 +1,10 @@
+{
+  "description": "Connect with Paris's Forró dance community through an elegant mobile site featuring event calendars, cultural stories, and inclusive Brazilian dance experiences.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

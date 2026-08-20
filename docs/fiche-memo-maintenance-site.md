@@ -1,40 +1,49 @@
 # Fiche mémo — Le site internet de l'association
 
-**Document de référence — 20 août 2026**
+**Document de travail — 20 août 2026**
 
-Ce document résume, en langage simple et sans jargon technique, la manière dont le site de l'association a été fabriqué, où il vit sur internet, comment on le met à jour, et quel est l'engagement de maintenance en cours. Il peut servir de référence commune, y compris pour des personnes non techniques.
+## 1. Pourquoi ces outils
 
-## 1. Comment le site a été fabriqué
+**Figma Make — pour construire et modifier le site**
+- Outil gratuit utilisé pour concevoir et modifier visuellement le site (mise en page, textes, photos)
+- Permet de changer le contenu sans écrire de code
+- Aucune licence payante
 
-Le site a été construit avec des outils numériques gratuits — aucune licence payante n'est nécessaire pour le faire fonctionner, le modifier ou le faire évoluer dans le temps.
+**GitHub — pour héberger et publier le site**
+- Plateforme d'hébergement gratuite, utilisée dans le monde entier
+- Une fois configurée, ne demande pas d'intervention technique récurrente
+- Aucun coût d'hébergement — ni aujourd'hui, ni dans les années à venir
+- Stable et fiable dans la durée (pas de risque de coupure lié à un hébergeur payant)
 
-## 2. Où le site est hébergé, et pourquoi
+## 2. Le process concret, en 2 étapes
 
-Le site est hébergé sur GitHub, une plateforme utilisée dans le monde entier pour stocker et faire vivre des projets numériques. L'hébergement du site lui-même y est gratuit. Ce choix a deux avantages concrets pour l'association :
+1. **Modification** — dans Figma Make : on modifie le contenu visuel du site (textes, photos, dates d'événements, informations pratiques)
+2. **Publication** — la modification est enregistrée et envoyée vers GitHub, qui publie automatiquement la nouvelle version du site en ligne, en quelques minutes, sans frais ni manipulation technique supplémentaire
 
-- Aucun coût d'hébergement — ni aujourd'hui, ni dans les années à venir.
-- Une plateforme stable et fiable : une fois configurée, elle ne demande pas d'intervention technique récurrente (pas de mise à jour de serveur, pas de risque de coupure lié à un hébergeur payant qui ferait faillite ou changerait ses tarifs).
+## 3. Noms de domaine
 
-En clair : le site peut rester en ligne durablement, sans que l'association ait à s'en soucier au quotidien ni à payer quoi que ce soit pour l'hébergement.
+- Le site est accessible via **deux noms de domaine**, achetés sur la plateforme **OVH** :
+  - `leptitbalperdu.org`
+  - `[second nom de domaine — à compléter]`
+- Achetés pour **1 an**, avec **renouvellement automatique**
+- Date d'achat / de renouvellement : `[à confirmer — vers le 19 août 2026]`
 
-## 3. Comment se passe une mise à jour du site
+## 4. Équipe & engagement de maintenance
 
-Quand un contenu doit être ajouté ou modifié — un texte, une photo, la date d'un événement, une information pratique — la personne qui s'occupe du site apporte la modification, puis la publie sur GitHub. Le site se met alors à jour automatiquement en ligne, en général en quelques minutes, sans manipulation supplémentaire ni frais.
-
-## 4. Engagement de maintenance en cours
-
-Depuis environ deux mois (accord confirmé par mail avec Marion), un engagement de maintenance a été pris pour le site : environ 12 ajouts ou modifications par mois, selon les besoins de l'association (actualités, photos, événements, informations pratiques, etc.).
-
-Le site a été conçu pour être facilement enrichi : de nouvelles pages ou de nouvelles sections peuvent être ajoutées au fil du temps, sans avoir à tout reconstruire.
+- Personnes en charge de la maintenance : **Marion** et **Maeva** (Maeva de façon temporaire)
+- Fréquence d'engagement : mise à jour du site environ **2 fois par mois**, notamment pour les événements à venir
+- Le site est conçu pour être facilement enrichi : de nouvelles pages ou sections peuvent être ajoutées au fil du temps, sans tout reconstruire
 
 ## 5. Ce qu'il faut retenir
 
 | | |
 |---|---|
-| **Outils utilisés** | Gratuits, sans licence payante |
-| **Hébergement** | GitHub — gratuit et stable, aucune facture récurrente |
-| **Mise en ligne d'une mise à jour** | Automatique, en quelques minutes, sans frais |
-| **Maintenance actuelle** | Environ 12 ajouts / modifications par mois |
+| **Pourquoi Figma Make** | Modifier le site visuellement, gratuitement, sans coder |
+| **Pourquoi GitHub** | Héberger et publier le site gratuitement, sans maintenance technique récurrente |
+| **Process de mise à jour** | Figma Make (modification) → GitHub (enregistrement + publication automatique) |
+| **Noms de domaine** | 2 domaines, achetés sur OVH, 1 an, renouvellement automatique |
+| **Équipe** | Marion et Maeva (temporaire) |
+| **Fréquence de maintenance** | Environ 2 mises à jour par mois (événements) |
 | **Évolutivité** | Le site peut grandir avec l'association (nouvelles pages, sections) |
 
 *Pour toute question sur le fonctionnement du site ou sur cet engagement de maintenance, la personne référente reste joignable directement.*

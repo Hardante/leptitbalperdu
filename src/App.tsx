@@ -51,19 +51,82 @@ const EVENTS: Evt[] = [
     description: "La soirée bal mensuelle avec initiation à la danse à 21h par Marion Lima, suivie d'un concert live. Bel Air de Forró reçoit Mytho Roots pour une Festa Junina explosive.",
   },
   {
-    id: 2,
-    title: "Les Kiosques Forró de l'Été",
-    subtitle: 'Bals en plein air chaque dimanche',
-    date: 'Avril – Septembre 2026',
-    dateSort: '2026-09-28',
+    id: 201,
+    title: "Kiosque Forró de l'Été",
+    subtitle: 'Square des Champs Élysées',
+    date: 'Dimanche 23 août 2026',
+    dateSort: '2026-08-23',
     time: '15h – 18h',
-    venue: '',
-    venueUrl: 'https://www.instagram.com/leptitbalperdu/',
+    venue: 'Square des Champs Élysées, 8e',
     category: 'Festivals',
     image: kiosquesPosterImg,
-    tag: 'Récurrent',
-    ticketUrl: 'https://www.instagram.com/leptitbalperdu/',
-    description: "Tous les dimanches d'avril à septembre, le forró sort dans les parcs de Paris. Les lieux changent chaque semaine — retrouvez-les sur Instagram. Initiation gratuite, ambiance festive, tout le monde est le bienvenu.",
+    tag: 'Kiosques',
+    description: "Bal forró en plein air avec initiation gratuite. Tout le monde est le bienvenu, aucune expérience requise.",
+  },
+  {
+    id: 202,
+    title: "Kiosque Forró de l'Été",
+    subtitle: 'Square Courteline',
+    date: 'Dimanche 30 août 2026',
+    dateSort: '2026-08-30',
+    time: '15h – 18h',
+    venue: 'Square Courteline, 12e',
+    category: 'Festivals',
+    image: kiosquesPosterImg,
+    tag: 'Kiosques',
+    description: "Bal forró en plein air avec initiation gratuite. Tout le monde est le bienvenu, aucune expérience requise.",
+  },
+  {
+    id: 203,
+    title: "Kiosque Forró de l'Été",
+    subtitle: "Square d'Anvers",
+    date: 'Dimanche 6 septembre 2026',
+    dateSort: '2026-09-06',
+    time: '15h – 18h',
+    venue: "Square d'Anvers, 9e",
+    category: 'Festivals',
+    image: kiosquesPosterImg,
+    tag: 'Kiosques',
+    description: "Bal forró en plein air avec initiation gratuite. Tout le monde est le bienvenu, aucune expérience requise.",
+  },
+  {
+    id: 204,
+    title: "Kiosque Forró de l'Été",
+    subtitle: 'Square Courteline',
+    date: 'Dimanche 13 septembre 2026',
+    dateSort: '2026-09-13',
+    time: '15h – 18h',
+    venue: 'Square Courteline, 12e',
+    category: 'Festivals',
+    image: kiosquesPosterImg,
+    tag: 'Kiosques',
+    description: "Bal forró en plein air avec initiation gratuite. Tout le monde est le bienvenu, aucune expérience requise.",
+  },
+  {
+    id: 205,
+    title: "Kiosque Forró de l'Été",
+    subtitle: 'Square Édouard Vaillant',
+    date: 'Dimanche 20 septembre 2026',
+    dateSort: '2026-09-20',
+    time: '15h – 18h',
+    venue: 'Square Édouard Vaillant, 20e',
+    category: 'Festivals',
+    image: kiosquesPosterImg,
+    tag: 'Kiosques',
+    description: "Bal forró en plein air avec initiation gratuite. Tout le monde est le bienvenu, aucune expérience requise.",
+  },
+  {
+    id: 206,
+    title: "Kiosque Forró de l'Été",
+    subtitle: 'Square Trousseau',
+    date: 'Dimanche 27 septembre 2026',
+    dateSort: '2026-09-27',
+    time: '15h – 18h',
+    venue: 'Square Trousseau, 12e',
+    category: 'Festivals',
+    image: kiosquesPosterImg,
+    tag: 'Kiosques',
+    description: "Bal forró en plein air avec initiation gratuite. Tout le monde est le bienvenu, aucune expérience requise.",
   },
   {
     id: 3,
@@ -231,10 +294,6 @@ function Nav() {
               onMouseLeave={e => (e.currentTarget.style.color = 'rgba(245,237,214,0.6)')}
             >{l.label}</a>
           ))}
-          <a href="#agenda" style={{ padding: '8px 18px', background: 'var(--primary)', color: 'var(--primary-foreground)', borderRadius: 20, fontFamily: "'Inter', sans-serif", fontSize: 13, fontWeight: 600, textDecoration: 'none', transition: 'opacity 0.2s' }}
-            onMouseEnter={e => (e.currentTarget.style.opacity = '0.85')}
-            onMouseLeave={e => (e.currentTarget.style.opacity = '1')}
-          >Prochain bal</a>
         </nav>
 
         {/* Mobile burger */}
@@ -254,10 +313,6 @@ function Nav() {
             <a key={l.href} href={l.href} onClick={() => setMobileOpen(false)}
               style={{ fontFamily: "'DM Serif Display', serif", fontSize: 28, color: 'var(--foreground)', textDecoration: 'none' }}>{l.label}</a>
           ))}
-          <a href="#agenda" onClick={() => setMobileOpen(false)}
-            style={{ display: 'inline-block', padding: '14px 28px', background: 'var(--primary)', color: 'var(--primary-foreground)', borderRadius: 24, fontWeight: 600, textDecoration: 'none', textAlign: 'center', marginTop: 4, fontFamily: "'Inter', sans-serif" }}>
-            Prochain bal
-          </a>
         </div>
       )}
 
@@ -447,7 +502,7 @@ function Hero() {
           </h1>
 
           <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 16, lineHeight: 1.7, color: 'rgba(245,237,214,0.78)', maxWidth: 460, marginBottom: 34, fontWeight: 300, animation: 'fadeUp 0.7s 0.2s ease both' }}>
-            Depuis bientôt vingt ans, Le P'tit Bal Perdu fait vivre à Paris les cultures populaires brésiliennes — forró, chant, bals, rencontres. Un espace vivant, accessible et collectif.
+            Depuis bientôt vingt ans, Le P'tit Bal Perdu fait vivre à Paris les cultures populaires brésiliennes — forró, chant, bals, cours et rencontres.
           </p>
 
           <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', animation: 'fadeUp 0.7s 0.3s ease both' }}>
@@ -512,7 +567,7 @@ function EventCardGrid({ evt }: { evt: Evt }) {
       onMouseEnter={() => setHov(true)}
       onMouseLeave={() => setHov(false)}
       style={{ background: '#fff', border: `1px solid ${hov ? color : 'var(--border)'}`, borderRadius: 8, overflow: 'hidden', display: 'flex', flexDirection: 'column', transition: 'border-color 0.25s, box-shadow 0.25s', boxShadow: hov ? '0 8px 32px rgba(0,0,0,0.10)' : '0 1px 4px rgba(0,0,0,0.05)' }}>
-      <div style={{ position: 'relative', aspectRatio: '3/4', overflow: 'hidden', background: '#f0e8d8' }}>
+      <div style={{ position: 'relative', aspectRatio: '4/3', overflow: 'hidden', background: '#f0e8d8' }}>
         <img src={evt.image} alt={`${evt.title} — ${evt.subtitle}`}
           style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s', transform: hov ? 'scale(1.05)' : 'scale(1)' }} />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(28,20,9,0.88) 0%, transparent 55%)' }} />
@@ -524,9 +579,9 @@ function EventCardGrid({ evt }: { evt: Evt }) {
         </div>
       </div>
       <div style={{ padding: '16px 18px 20px', flex: 1, display: 'flex', flexDirection: 'column', gap: 5 }}>
-        <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: 'var(--primary)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{evt.date}</p>
-        <h3 style={{ fontFamily: "'DM Serif Display', serif", fontSize: 20, color: 'var(--surface-foreground)', lineHeight: 1.15 }}>{evt.title}</h3>
-        <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 13, color: 'var(--muted-foreground)', lineHeight: 1.55, flexGrow: 1 }}>{evt.subtitle}</p>
+        <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: 'var(--primary)', letterSpacing: '0.1em', textTransform: 'uppercase', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{evt.date}</p>
+        <h3 style={{ fontFamily: "'DM Serif Display', serif", fontSize: 17, color: 'var(--surface-foreground)', lineHeight: 1.15, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{evt.title}</h3>
+        <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 12, color: 'var(--muted-foreground)', lineHeight: 1.4, flexGrow: 1, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{evt.subtitle}</p>
         <div style={{ display: 'flex', gap: 12, marginTop: 10, paddingTop: 12, borderTop: '1px solid var(--border)' }}>
           <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: 'var(--muted-foreground)', display: 'flex', alignItems: 'center', gap: 4 }}>
             <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><circle cx="5" cy="5" r="4" stroke="currentColor" strokeWidth="1"/><path d="M5 2.5v2.5l1.5 1" stroke="currentColor" strokeWidth="1" strokeLinecap="round"/></svg>
@@ -617,82 +672,75 @@ function EventRowList({ evt, isLast }: { evt: Evt; isLast: boolean }) {
 
 // ─── Courses section ────────────────────────────────────────────────────────────
 
-const SCHEDULE = [
-  { day: 'Mardi',  time: '19h30 – 21h00', level: 'Débutants',    color: 'var(--accent)' },
-  { day: 'Mardi',  time: '21h00 – 22h30', level: 'Inter 1',      color: 'var(--primary)' },
-  { day: 'Jeudi',  time: '19h30 – 21h00', level: 'Avancés',      color: 'var(--secondary)' },
-  { day: 'Jeudi',  time: '21h00 – 22h30', level: 'Ateliers — tous niveaux', color: 'var(--primary)' },
-]
-
-
 function CoursesSection() {
   return (
     <section id="cours" style={{ background: 'var(--background)', padding: '72px 24px' }}>
       <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+
+        <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: '0.18em', color: 'var(--primary)', textTransform: 'uppercase', margin: '0 0 10px' }}>
+          Rentrée 2026 — 20e année
+        </p>
+        <h2 style={{ fontFamily: "'DM Serif Display', serif", fontSize: 'clamp(28px, 4vw, 44px)', color: 'var(--foreground)', lineHeight: 1.05, margin: '0 0 40px' }}>
+          Cours & ateliers<br /><em style={{ color: 'var(--primary)' }}>danse & chant</em>
+        </h2>
+
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 40, alignItems: 'start' }}>
 
-          {/* Left column: heading + schedule + CTA */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
-            <div>
-              <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: '0.18em', color: 'var(--primary)', textTransform: 'uppercase', margin: '0 0 10px' }}>
-                Rentrée 2026 — 20e année
+          {/* Forró */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+            <div style={{ borderLeft: '2.5px solid var(--primary)', paddingLeft: 16 }}>
+              <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: '0.14em', color: 'var(--primary)', textTransform: 'uppercase', margin: '0 0 6px' }}>Forró · Danse</p>
+              <h3 style={{ fontFamily: "'DM Serif Display', serif", fontSize: 24, color: 'var(--foreground)', margin: '0 0 10px' }}>Cours avec Marion Lima</h3>
+              <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, color: 'rgba(245,237,214,0.5)', margin: '0 0 12px' }}>
+                Mardis & jeudis · 19h30 – 22h30 · Studio des Rigoles, 75020
               </p>
-              <h2 style={{ fontFamily: "'DM Serif Display', serif", fontSize: 'clamp(28px, 4vw, 44px)', color: 'var(--foreground)', lineHeight: 1.05, margin: '0 0 12px' }}>
-                Cours de forró<br /><em style={{ color: 'var(--primary)' }}>mardis & jeudis</em>
-              </h2>
-              <p style={{ color: 'var(--muted-foreground)', fontSize: 14, lineHeight: 1.7, margin: 0 }}>
-                Avec Marion Lima, du débutant au niveau avancé. Programme annuel — régularité recommandée. Ateliers thématiques le jeudi pour les emplois du temps irréguliers.
+              <p style={{ color: 'var(--muted-foreground)', fontSize: 14, lineHeight: 1.7, margin: 0, fontWeight: 300 }}>
+                Du débutant à l'avancé, les cours couvrent les pas de base, les figures de bal, le travail d'abraço, la musicalité et les rythmes du Nordeste. Ateliers thématiques le jeudi pour les emplois du temps irréguliers.
               </p>
             </div>
-
-            {/* Schedule */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-              {SCHEDULE.map((row, i) => (
-                <div key={i} style={{
-                  display: 'grid', gridTemplateColumns: '60px 1fr auto', alignItems: 'center', gap: 12,
-                  background: 'rgba(255,255,255,0.04)', border: '1px solid var(--border-dark)',
-                  borderRadius: 5, padding: '10px 16px',
-                }}>
-                  <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, color: row.color, fontWeight: 600 }}>{row.day}</span>
-                  <span style={{ color: 'var(--foreground)', fontSize: 13 }}>{row.time}</span>
-                  <span style={{ background: 'rgba(255,255,255,0.05)', border: `1px solid ${row.color}55`, color: row.color, fontSize: 10, fontWeight: 600, padding: '2px 8px', borderRadius: 20, whiteSpace: 'nowrap', fontFamily: "'DM Mono', monospace" }}>
-                    {row.level}
-                  </span>
-                </div>
-              ))}
-            </div>
-
-            {/* Free trial + CTA */}
             <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 10 }}>
               <a href="https://www.ecolededansekimkan.com/danses-adultes/forro-by-le-ptit-bal-perdu"
                 target="_blank" rel="noopener noreferrer"
                 style={{ display: 'inline-flex', alignItems: 'center', gap: 7, background: 'var(--primary)', color: '#1a0e00', padding: '10px 18px', borderRadius: 4, fontFamily: "'DM Mono', monospace", fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textDecoration: 'none', transition: 'opacity 0.2s' }}
                 onMouseEnter={e => (e.currentTarget.style.opacity='0.82')} onMouseLeave={e => (e.currentTarget.style.opacity='1')}>
-                Inscription & Tarifs — École Kimkan
+                Inscription — École Kimkan
                 <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H4M11 1V8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
               </a>
               <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: 'var(--secondary)', border: '1px solid rgba(201,24,74,0.35)', padding: '6px 12px', borderRadius: 20, whiteSpace: 'nowrap' }}>
                 1er cours gratuit en sept.
               </span>
             </div>
-            <p style={{ color: 'rgba(245,237,214,0.3)', fontSize: 11, fontFamily: "'DM Mono', monospace", margin: 0 }}>
-              Studio des Rigoles — 46 rue des Rigoles, 75020 Paris
-            </p>
+            <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, borderRadius: 8, overflow: 'hidden', boxShadow: '0 6px 32px rgba(0,0,0,0.5)' }}>
+              <iframe src="https://www.youtube.com/embed/pADOtHIpi28?rel=0&modestbranding=1" title="Le forró en vidéo"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen
+                style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 'none' }} />
+            </div>
           </div>
 
-          {/* Right column: video */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-            <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: '0.14em', color: 'var(--muted-foreground)', textTransform: 'uppercase', margin: 0 }}>
-              Le forró en vidéo
-            </p>
+          {/* Chorale */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+            <div style={{ borderLeft: '2.5px solid var(--accent)', paddingLeft: 16 }}>
+              <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: '0.14em', color: 'var(--accent)', textTransform: 'uppercase', margin: '0 0 6px' }}>Chorale · Chant</p>
+              <h3 style={{ fontFamily: "'DM Serif Display', serif", fontSize: 24, color: 'var(--foreground)', margin: '0 0 10px' }}>La Chorale du P'tit Bal</h3>
+              <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, color: 'rgba(245,237,214,0.5)', margin: '0 0 12px' }}>
+                Répétitions hebdomadaires · Depuis 2012
+              </p>
+              <p style={{ color: 'var(--muted-foreground)', fontSize: 14, lineHeight: 1.7, margin: 0, fontWeight: 300 }}>
+                Chanter en portugais les classiques du Nordeste brésilien — forró, baião, xaxado. Aucune expérience requise. La chorale répète chaque semaine et se produit au Forrobodó. Une façon de rentrer dans la musique par la voix.
+              </p>
+            </div>
+            <a href="https://www.helloasso.com/associations/le-p-tit-bal-perdu/evenements/la-chorale-du-p-tit-bal-2024-25"
+              target="_blank" rel="noopener noreferrer"
+              style={{ display: 'inline-flex', alignItems: 'center', gap: 7, border: '1.5px solid var(--accent)', color: 'var(--accent)', padding: '10px 18px', borderRadius: 4, fontFamily: "'DM Mono', monospace", fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textDecoration: 'none', transition: 'background 0.2s, color 0.2s', alignSelf: 'flex-start' }}
+              onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.background='var(--accent)'; el.style.color='#fff' }}
+              onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.background='transparent'; el.style.color='var(--accent)' }}>
+              Rejoindre la chorale
+              <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H4M11 1V8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            </a>
             <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, borderRadius: 8, overflow: 'hidden', boxShadow: '0 6px 32px rgba(0,0,0,0.5)' }}>
-              <iframe
-                src="https://www.youtube.com/embed/pADOtHIpi28?rel=0&modestbranding=1"
-                title="Le forró en vidéo"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 'none' }}
-              />
+              <iframe src="https://www.youtube.com/embed/2w8yZyMbIag?rel=0&modestbranding=1" title="La chorale du P'tit Bal"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen
+                style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 'none' }} />
             </div>
           </div>
 
@@ -762,7 +810,7 @@ function EventsSection() {
 
         {/* Upcoming */}
         {view === 'grille' && upcoming.length > 0 && (
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: 16 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(170px, 1fr))', gap: 16 }}>
             {upcoming.map(e => <EventCardGrid key={e.id} evt={e} />)}
           </div>
         )}
@@ -795,7 +843,7 @@ function EventsSection() {
             {showPast && (
               <div style={{ marginTop: 20, opacity: 0.6, filter: 'saturate(0.4)' }}>
                 {view === 'grille' && (
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: 16 }}>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(170px, 1fr))', gap: 16 }}>
                     {past.map(e => <EventCardGrid key={e.id} evt={e} />)}
                   </div>
                 )}
@@ -816,40 +864,6 @@ function EventsSection() {
 // ─── About section ──────────────────────────────────────────────────────────────
 
 function AboutSection() {
-  const milestones = [
-    {
-      year: '2006',
-      label: 'Fondation',
-      text: "Marion Lima crée Le P'tit Bal Perdu dans le 20e arrondissement avec une idée simple : rendre le forró du Nordeste brésilien accessible à Paris. Dès le premier cours, la salle est pleine — le bouche-à-oreille fait le reste.",
-    },
-    {
-      year: '2010',
-      label: 'Naissance du Forrobodó',
-      text: "Premier Forrobodó : une soirée mensuelle qui réunit initiation à la danse et concert live jusqu'à 2h du matin. La formule s'impose en quelques éditions comme le rendez-vous forró incontournable de Paris, accueillant régulièrement plus de 200 personnes.",
-    },
-    {
-      year: '2012',
-      label: 'La Chorale',
-      text: "Naissance de la chorale du P'tit Bal — une première en France pour le forró. Une vingtaine de choristes apprennent à chanter en portugais les classiques du Nordeste, et se produisent pour la première fois au Forrobodó de décembre.",
-    },
-    {
-      year: '2015',
-      label: "Kiosques de l'été",
-      text: "Le P'tit Bal Perdu investit les kiosques à musique des squares parisiens. Chaque dimanche de l'été, des centaines de Parisiens découvrent le forró en plein air — passants surpris, habitués fidèles, pique-niques improvisés autour de la piste.",
-    },
-    {
-      year: '2020',
-      label: 'Résilience',
-      text: "La pandémie ferme les salles, mais pas la communauté. Marion maintient le lien avec des cours en ligne suivis depuis Paris, São Paulo ou Lisbonne — révélant au passage que le P'tit Bal avait essaimé bien au-delà du 20e.",
-    },
-    {
-      year: '2026',
-      label: '20e Anniversaire',
-      text: "Pour les 20 ans, Marion organise \"Para, Não Para\" — un marathon de forró continu sur trois jours en septembre, avec des musiciens invités du Brésil et de toute l'Europe. Vingt ans de danse, d'amitié et de cultures populaires brésiliennes à Paris.",
-    },
-  ]
-
-  const [active, setActive] = useState(5)
 
   return (
     <section id="histoire" style={{ background: '#fff', overflow: 'hidden', position: 'relative' }}>
@@ -876,22 +890,23 @@ function AboutSection() {
           Vingt ans de forró <em style={{ color: 'var(--primary)' }}>à Paris</em>
         </h2>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'start' }} className="about-grid">
+        <div style={{ display: 'grid', gridTemplateColumns: '340px 1fr', gap: 48, alignItems: 'start' }} className="about-grid">
 
-          {/* Left: Marion + text */}
-          <div>
-            <div style={{ position: 'relative', marginBottom: 32 }}>
-              <div style={{ aspectRatio: '4/5', overflow: 'hidden', borderRadius: 8, background: '#f0e8d8' }}>
-                <img src={marionLimaImg} alt="Marion Lima, fondatrice du P'tit Bal Perdu"
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }} />
-                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(28,20,9,0.8) 0%, transparent 50%)' }} />
-              </div>
-              <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '24px 24px 28px' }}>
-                <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: '0.14em', color: 'var(--primary)', textTransform: 'uppercase', marginBottom: 5 }}>Fondatrice & Pédagogue</p>
-                <h3 style={{ fontFamily: "'DM Serif Display', serif", fontSize: 30, color: '#fff', lineHeight: 1 }}>Marion Lima</h3>
-              </div>
+          {/* Left: Marion photo */}
+          <div style={{ position: 'relative', flexShrink: 0 }}>
+            <div style={{ aspectRatio: '4/5', overflow: 'hidden', borderRadius: 8, background: '#f0e8d8' }}>
+              <img src={marionLimaImg} alt="Marion Lima, fondatrice du P'tit Bal Perdu"
+                style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }} />
+              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(28,20,9,0.8) 0%, transparent 50%)' }} />
             </div>
+            <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '24px 24px 28px' }}>
+              <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: '0.14em', color: 'var(--primary)', textTransform: 'uppercase', marginBottom: 5 }}>Fondatrice & Pédagogue</p>
+              <h3 style={{ fontFamily: "'DM Serif Display', serif", fontSize: 30, color: '#fff', lineHeight: 1 }}>Marion Lima</h3>
+            </div>
+          </div>
 
+          {/* Right: text + press */}
+          <div>
             {/* Long copy */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
               <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 15, color: 'var(--surface-foreground)', lineHeight: 1.75, fontWeight: 400 }}>
@@ -907,25 +922,9 @@ function AboutSection() {
                 Le P'tit Bal Perdu se veut un espace ouvert et respectueux. Le bal est un lieu de rencontre et d'expression — et c'est précisément pour cela qu'il doit rester un endroit où chacun se sent en sécurité. Débutant ou danseur confirmé, seul ou accompagné, on y vient comme on est, et on y est accueilli comme on le mérite : avec bienveillance.
               </p>
             </div>
-          </div>
-
-          {/* Right: timeline + mosaic */}
-          <div>
-            <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: '0.14em', color: 'var(--muted-foreground)', textTransform: 'uppercase', marginBottom: 20 }}>Chronologie</p>
-            <div style={{ display: 'flex', flexDirection: 'column', marginBottom: 40 }}>
-              {milestones.map((m, i) => (
-                <button key={m.year} onClick={() => setActive(i)} style={{ all: 'unset', cursor: 'pointer', display: 'grid', gridTemplateColumns: '52px 1fr', gap: 14, padding: '14px 14px 14px 16px', borderLeft: `2.5px solid ${active === i ? 'var(--primary)' : 'var(--border)'}`, marginLeft: 1, transition: 'border-color 0.25s', background: active === i ? '#fdf7ee' : 'transparent', borderRadius: '0 6px 6px 0', textAlign: 'left' }}>
-                  <div style={{ fontFamily: "'DM Serif Display', serif", fontSize: 18, color: active === i ? 'var(--primary)' : 'var(--muted-foreground)', lineHeight: 1, transition: 'color 0.25s', paddingTop: 2 }}>{m.year}</div>
-                  <div>
-                    <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 13, fontWeight: 600, color: active === i ? 'var(--surface-foreground)' : 'var(--muted-foreground)', marginBottom: 3, transition: 'color 0.25s' }}>{m.label}</p>
-                    <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 13, color: 'var(--muted-foreground)', lineHeight: 1.6, maxHeight: active === i ? 200 : 0, overflow: 'hidden', transition: 'max-height 0.35s ease', fontWeight: 300 }}>{m.text}</p>
-                  </div>
-                </button>
-              ))}
-            </div>
 
             {/* Press / articles */}
-            <div style={{ marginTop: 12 }}>
+            <div style={{ marginTop: 24 }}>
               <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: '0.14em', color: 'var(--muted-foreground)', textTransform: 'uppercase', marginBottom: 10 }}>En savoir plus sur Marion et l'association</p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
                 {([
@@ -998,6 +997,8 @@ function Footer() {
               {[
                 { href: 'https://instagram.com/leptitbalperdu', label: '@leptitbalperdu', icon: 'ig' },
                 { href: 'https://instagram.com/marionpbp', label: '@marionpbp', icon: 'ig' },
+                { href: 'https://instagram.com/naopara.marathon', label: '@naopara.marathon', icon: 'ig' },
+                { href: 'https://www.instagram.com/ecolekimkan', label: '@ecolekimkan', icon: 'ig' },
                 { href: 'https://www.facebook.com/leptitbalperdu', label: 'Le P\'tit Bal Perdu', icon: 'fb' },
               ].map(l => (
                 <a key={l.href} href={l.href} target="_blank" rel="noopener noreferrer"
@@ -1033,99 +1034,69 @@ function Footer() {
 
 function TestimonialsSection() {
   const quotes = [
-    {
-      text: "Avec le forró, j'ai rencontré une communauté, une famille. Je suis arrivée seule un vendredi soir et je ne suis jamais vraiment repartie.",
-      author: "Camille",
-      role: "Danseuse depuis 2019",
-    },
-    {
-      text: "Dansez, y a que ça de bon. Et au P'tit Bal, on danse vraiment — on transpire, on rit, on se retrouve.",
-      author: "Jacques",
-      role: "Fidèle du Forrobodó",
-    },
-    {
-      text: "Le forró m'a appris à écouter l'autre, à m'adapter, à être dans l'instant. C'est bien plus qu'une danse.",
-      author: "Rui",
-      role: "Musicien & danseur",
-    },
-    {
-      text: "Ce que j'aime ici, c'est qu'il n'y a pas de jugement. On peut être débutant, maladroit, timide — on est accueilli pareil.",
-      author: "Nadia",
-      role: "Débutante, promotion 2023",
-    },
-    {
-      text: "Je n'avais jamais dansé de ma vie. Aujourd'hui le forró fait partie de mon rythme de semaine. Marion est une pédagogue extraordinaire.",
-      author: "Thomas",
-      role: "Élève depuis 2022",
-    },
+    { text: "Avec le forró, j'ai rencontré une communauté, une famille. Je suis arrivée seule un vendredi soir et je ne suis jamais vraiment repartie.", author: "Camille", role: "Danseuse depuis 2019" },
+    { text: "Dansez, y a que ça de bon. Et au P'tit Bal, on danse vraiment — on transpire, on rit, on se retrouve.", author: "Jacques", role: "Fidèle du Forrobodó" },
+    { text: "Le forró m'a appris à écouter l'autre, à m'adapter, à être dans l'instant. C'est bien plus qu'une danse.", author: "Rui", role: "Musicien & danseur" },
+    { text: "C'est une danse qui m'a redonné l'envie de vivre, c'est une source de joie qui m'accompagne au quotidien.", author: "Marie", role: "Élève depuis 2023" },
+    { text: "Je n'avais jamais dansé de ma vie. Aujourd'hui le forró fait partie de mon rythme de semaine. Marion est une pédagogue extraordinaire.", author: "Thomas", role: "Élève depuis 2022" },
   ]
 
   const [idx, setIdx] = useState(0)
   const prev = () => setIdx(i => (i - 1 + quotes.length) % quotes.length)
   const next = () => setIdx(i => (i + 1) % quotes.length)
-
   useEffect(() => {
     const t = setInterval(next, 5000)
     return () => clearInterval(t)
   }, [])
 
-  const q = quotes[idx]
-
   return (
-    <section style={{ background: 'var(--background)', padding: '80px 0 88px', position: 'relative', overflow: 'hidden' }}>
-      <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle, rgba(224,144,16,0.06) 1px, transparent 1px)', backgroundSize: '28px 28px', pointerEvents: 'none' }} />
+    <section style={{ background: 'var(--background)', padding: '52px 0 60px', position: 'relative', overflow: 'hidden' }}>
+      <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle, rgba(224,144,16,0.05) 1px, transparent 1px)', backgroundSize: '28px 28px', pointerEvents: 'none' }} />
+      <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px', position: 'relative' }}>
 
-      <div style={{ maxWidth: 720, margin: '0 auto', padding: '0 24px', position: 'relative' }}>
-        <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: '0.18em', color: 'var(--primary)', textTransform: 'uppercase', marginBottom: 14 }}>
-          La communauté parle
-        </p>
-        <h2 style={{ fontFamily: "'DM Serif Display', serif", fontSize: 'clamp(30px, 5vw, 52px)', color: 'var(--foreground)', lineHeight: 0.95, letterSpacing: '-0.02em', marginBottom: 48 }}>
-          Ils dansent,<br /><em style={{ color: 'var(--primary)' }}>ils témoignent</em>
-        </h2>
-
-        {/* Card */}
-        <div style={{ background: 'var(--card)', border: '1px solid var(--border)', borderRadius: 10, padding: '36px 40px 32px', minHeight: 200 }}>
-          <span style={{ fontFamily: "'DM Serif Display', serif", fontSize: 56, color: 'var(--primary)', lineHeight: 0.6, opacity: 0.45, display: 'block', marginBottom: 16 }}>"</span>
-          <p key={idx} style={{ fontFamily: "'Inter', sans-serif", fontSize: 17, color: 'var(--surface-foreground)', lineHeight: 1.75, fontWeight: 400, margin: '0 0 28px', animation: 'fadeUp 0.35s ease both' }}>
-            {q.text}
-          </p>
-          <div style={{ borderTop: '1px solid var(--border)', paddingTop: 18 }}>
-            <p style={{ fontFamily: "'DM Serif Display', serif", fontSize: 17, color: '#a86c00', lineHeight: 1, margin: 0 }}>{q.author}</p>
-            <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: 'var(--muted-foreground)', letterSpacing: '0.08em', marginTop: 5 }}>{q.role}</p>
+        <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16, marginBottom: 28 }}>
+          <div>
+            <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: '0.18em', color: 'var(--primary)', textTransform: 'uppercase', marginBottom: 10 }}>La communauté parle</p>
+            <h2 style={{ fontFamily: "'DM Serif Display', serif", fontSize: 'clamp(30px, 5vw, 52px)', color: 'var(--foreground)', lineHeight: 0.95, letterSpacing: '-0.02em', margin: 0 }}>
+              Ils dansent,<br /><em style={{ color: 'var(--primary)' }}>ils témoignent</em>
+            </h2>
+          </div>
+          <div style={{ display: 'flex', gap: 8 }}>
+            {[['←', prev], ['→', next]].map(([arrow, fn]) => (
+              <button key={arrow as string} onClick={fn as () => void} style={{ all: 'unset', cursor: 'pointer', width: 34, height: 34, borderRadius: '50%', border: '1px solid var(--border-dark)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--foreground)', fontSize: 15, transition: 'background 0.2s' }}
+                onMouseEnter={e => (e.currentTarget.style.background = 'rgba(255,255,255,0.08)')}
+                onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}>
+                {arrow}
+              </button>
+            ))}
           </div>
         </div>
 
-        {/* Controls */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 24 }}>
-          {/* Dots */}
-          <div style={{ display: 'flex', gap: 8 }}>
-            {quotes.map((_, i) => (
-              <button key={i} onClick={() => setIdx(i)} style={{
-                all: 'unset', cursor: 'pointer',
-                width: i === idx ? 20 : 7, height: 7,
-                borderRadius: 4, transition: 'all 0.3s',
-                background: i === idx ? 'var(--primary)' : 'rgba(245,237,214,0.2)',
-              }} aria-label={`Témoignage ${i+1}`} />
+        {/* Carrousel une ligne */}
+        <div style={{ overflow: 'hidden' }}>
+          <div style={{ display: 'flex', gap: 14, transition: 'transform 0.4s ease', transform: `translateX(calc(-${idx} * (100% / 3 + 14px / 3 * 2)))` }} className="testi-track">
+            {quotes.map((q, i) => (
+              <div key={i} style={{ flex: '0 0 calc(33.33% - 10px)', minWidth: 0, background: 'var(--card)', border: `1px solid ${i === idx ? 'var(--primary)' : 'var(--border)'}`, borderRadius: 8, padding: '16px 18px 14px', display: 'flex', flexDirection: 'column', gap: 8, transition: 'border-color 0.3s' }}>
+                <span style={{ fontFamily: "'DM Serif Display', serif", fontSize: 28, color: 'var(--primary)', lineHeight: 0.6, opacity: 0.4 }}>"</span>
+                <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 13, color: 'var(--surface-foreground)', lineHeight: 1.65, fontWeight: 400, margin: 0, flexGrow: 1 }}>{q.text}</p>
+                <div style={{ borderTop: '1px solid var(--border)', paddingTop: 8 }}>
+                  <p style={{ fontFamily: "'DM Serif Display', serif", fontSize: 14, color: '#a86c00', margin: 0 }}>{q.author}</p>
+                  <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: 'var(--muted-foreground)', letterSpacing: '0.07em', marginTop: 3 }}>{q.role}</p>
+                </div>
+              </div>
             ))}
           </div>
-          {/* Arrows */}
-          <div style={{ display: 'flex', gap: 8 }}>
-            {[['←', prev], ['→', next]].map(([arrow, fn]) => (
-              <button key={arrow as string} onClick={fn as ()=>void} style={{
-                all: 'unset', cursor: 'pointer',
-                width: 36, height: 36, borderRadius: '50%',
-                border: '1px solid var(--border-dark)',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                color: 'var(--foreground)', fontSize: 16, transition: 'background 0.2s',
-              }}
-              onMouseEnter={e => (e.currentTarget.style.background='rgba(255,255,255,0.08)')}
-              onMouseLeave={e => (e.currentTarget.style.background='transparent')}
-              >{arrow}</button>
-            ))}
-          </div>
+        </div>
+
+        {/* Dots */}
+        <div style={{ display: 'flex', gap: 7, marginTop: 20 }}>
+          {quotes.map((_, i) => (
+            <button key={i} onClick={() => setIdx(i)} style={{ all: 'unset', cursor: 'pointer', width: i === idx ? 18 : 6, height: 6, borderRadius: 4, transition: 'all 0.3s', background: i === idx ? 'var(--primary)' : 'rgba(245,237,214,0.2)' }} />
+          ))}
         </div>
 
       </div>
+      <style>{`@media(max-width:700px){.testi-track > div{flex: 0 0 calc(100% - 0px) !important;}}`}</style>
     </section>
   )
 }
@@ -1142,9 +1113,8 @@ function MembershipBadge() {
 
   return (
     <a
-      href="https://www.helloasso.com/associations/le-p-tit-bal-perdu"
-      target="_blank" rel="noopener noreferrer"
-      aria-label="Adhérer à l'association Le P'tit Bal Perdu"
+      href="#agenda"
+      aria-label="Voir le prochain bal"
       style={{
         position: 'fixed', bottom: 28, right: 24, zIndex: 50,
         display: 'flex', alignItems: 'center', gap: 10,
@@ -1171,8 +1141,8 @@ function MembershipBadge() {
         <span style={{ position: 'relative', width: 10, height: 10, borderRadius: '50%', background: '#1a0e00' }} />
       </span>
       <span style={{ lineHeight: 1.2 }}>
-        <span style={{ display: 'block', fontSize: 9, opacity: 0.7, letterSpacing: '0.1em', marginBottom: 1 }}>BALS & FESTIVALS</span>
-        Adhérer à l'asso
+        <span style={{ display: 'block', fontSize: 9, opacity: 0.7, letterSpacing: '0.1em', marginBottom: 1 }}>CE WEEK-END</span>
+        On danse ?
       </span>
     </a>
   )
@@ -1270,29 +1240,6 @@ export default function App() {
       <EventsSection />
       <AboutSection />
       <TestimonialsSection />
-
-      {/* Chorale CTA */}
-      <div style={{ borderTop: '1px solid #e8e0d0', background: '#fdf7ee' }}>
-        <div style={{ maxWidth: 1200, margin: '0 auto', padding: '40px 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 24, flexWrap: 'wrap' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-            <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--accent)', margin: 0 }}>Vous voulez aller plus loin ?</p>
-            <p style={{ fontFamily: "'DM Serif Display', serif", fontSize: 22, color: 'var(--surface-foreground)', lineHeight: 1.2, margin: 0 }}>
-              Rejoignez la Chorale du P'tit Bal
-            </p>
-            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 14, color: 'var(--muted-foreground)', lineHeight: 1.6, margin: 0, maxWidth: 520, fontWeight: 300 }}>
-              Chanter en portugais les classiques du Nordeste, sans avoir besoin d'expérience. La chorale répète chaque semaine et se produit au Forrobodó — une autre façon de rentrer dans la musique.
-            </p>
-          </div>
-          <a href="https://www.helloasso.com/associations/le-p-tit-bal-perdu/evenements/la-chorale-du-p-tit-bal-2024-25"
-            target="_blank" rel="noopener noreferrer"
-            style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '12px 22px', border: '1.5px solid var(--accent)', borderRadius: 4, fontFamily: "'DM Mono', monospace", fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', color: 'var(--accent)', textDecoration: 'none', whiteSpace: 'nowrap', transition: 'background 0.2s, color 0.2s', flexShrink: 0 }}
-            onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.background = 'var(--accent)'; el.style.color = '#fff' }}
-            onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.background = 'transparent'; el.style.color = 'var(--accent)' }}>
-            Rejoindre la chorale
-            <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H4M11 1V8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-          </a>
-        </div>
-      </div>
 
       <Footer />
       <MembershipBadge />

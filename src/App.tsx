@@ -18,7 +18,7 @@ import courseDanseImg    from '@/imports/WhatsApp_Image_2026-08-18_at_17.04.07.j
 
 // ─── types & data ──────────────────────────────────────────────────────────────
 
-type Filter = 'Tous' | 'Bals' | 'Cours' | 'Stages' | 'Festivals'
+type Filter = 'Tous' | 'Bals' | 'Cours & Ateliers' | 'Stages' | 'Festivals'
 type ViewMode = 'grille' | 'liste'
 
 interface Evt {
@@ -59,7 +59,7 @@ const EVENTS: Evt[] = [
     dateSort: '2026-09-15',
     time: '19h30 – 22h30',
     venue: 'Studio des Rigoles, 46 rue des Rigoles, 75020',
-    category: 'Cours',
+    category: 'Cours & Ateliers',
     image: rentreeImg,
     tag: '1er cours gratuit',
     description: "Portes ouvertes pour la rentrée ! Venez découvrir ou redécouvrir les cours de forró avec Marion Lima. Tous niveaux, débutants bienvenus. 1er cours offert — les 15 & 17 septembre pour les mardis/jeudis, les 22 & 24 pour une 2e session.",
@@ -186,7 +186,7 @@ const EVENTS: Evt[] = [
     dateSort: '2026-05-28',
     time: '21h – 22h30',
     venue: 'Studio des Rigoles, 46 rue des Rigoles, 75020',
-    category: 'Cours',
+    category: 'Cours & Ateliers',
     image: ateliersImg,
     tag: 'Série',
     description: "Quatre séances progressives pour apprivoiser les bases du forró : pas, abraço, figures de vases, préparation aux bals d'été.",
@@ -233,18 +233,18 @@ const EVENTS: Evt[] = [
   },
 ]
 
-const FILTERS: Filter[] = ['Tous', 'Bals', 'Cours', 'Stages', 'Festivals']
+const FILTERS: Filter[] = ['Tous', 'Bals', 'Cours & Ateliers', 'Stages', 'Festivals']
 
 const CAT_COLOR: Record<string, string> = {
   Bals:     '#c9184a',
-  Cours:    '#1aa0b8',
+  'Cours & Ateliers': '#1aa0b8',
   Stages:   '#7c5cbf',
   Festivals:'#e09010',
 }
 
 const CAT_BG: Record<string, string> = {
   Bals:     '#fce8ee',
-  Cours:    '#dff4f8',
+  'Cours & Ateliers': '#dff4f8',
   Stages:   '#ede8f8',
   Festivals:'#fdf2d8',
 }

@@ -18,7 +18,7 @@ import courseDanseImg    from '@/imports/WhatsApp_Image_2026-08-18_at_17.04.07.j
 
 // ─── types & data ──────────────────────────────────────────────────────────────
 
-type Filter = 'Tous' | 'Concerts' | 'Ateliers' | 'Stages' | 'Festivals'
+type Filter = 'Tous' | 'Bals' | 'Ateliers' | 'Stages' | 'Festivals'
 type ViewMode = 'grille' | 'liste'
 
 interface Evt {
@@ -46,7 +46,7 @@ const EVENTS: Evt[] = [
     dateSort: '2026-06-26',
     time: '21h – 2h',
     venue: '19-21 rue Boyer, 75020 Paris',
-    category: 'Concerts',
+    category: 'Bals',
     image: festJuninaImg,
     tag: 'Festa Junina',
     description: "La soirée bal mensuelle avec initiation à la danse à 21h par Marion Lima, suivie d'un concert live. Bel Air de Forró reçoit Mytho Roots pour une Festa Junina explosive.",
@@ -72,7 +72,7 @@ const EVENTS: Evt[] = [
     dateSort: '2026-08-23',
     time: '15h – 18h',
     venue: 'Square des Champs Élysées, 8e',
-    category: 'Festivals',
+    category: 'Bals',
     image: kiosquesPosterImg,
     tag: 'Kiosques',
     description: "Bal forró en plein air avec initiation gratuite. Tout le monde est le bienvenu, aucune expérience requise.",
@@ -85,7 +85,7 @@ const EVENTS: Evt[] = [
     dateSort: '2026-08-30',
     time: '15h – 18h',
     venue: 'Square Courteline, 12e',
-    category: 'Festivals',
+    category: 'Bals',
     image: kiosquesPosterImg,
     tag: 'Kiosques',
     description: "Bal forró en plein air avec initiation gratuite. Tout le monde est le bienvenu, aucune expérience requise.",
@@ -98,7 +98,7 @@ const EVENTS: Evt[] = [
     dateSort: '2026-09-06',
     time: '15h – 18h',
     venue: "Square d'Anvers, 9e",
-    category: 'Festivals',
+    category: 'Bals',
     image: kiosquesPosterImg,
     tag: 'Kiosques',
     description: "Bal forró en plein air avec initiation gratuite. Tout le monde est le bienvenu, aucune expérience requise.",
@@ -111,7 +111,7 @@ const EVENTS: Evt[] = [
     dateSort: '2026-09-13',
     time: '15h – 18h',
     venue: 'Square Courteline, 12e',
-    category: 'Festivals',
+    category: 'Bals',
     image: kiosquesPosterImg,
     tag: 'Kiosques',
     description: "Bal forró en plein air avec initiation gratuite. Tout le monde est le bienvenu, aucune expérience requise.",
@@ -124,7 +124,7 @@ const EVENTS: Evt[] = [
     dateSort: '2026-09-20',
     time: '15h – 18h',
     venue: 'Square Édouard Vaillant, 20e',
-    category: 'Festivals',
+    category: 'Bals',
     image: kiosquesPosterImg,
     tag: 'Kiosques',
     description: "Bal forró en plein air avec initiation gratuite. Tout le monde est le bienvenu, aucune expérience requise.",
@@ -137,7 +137,7 @@ const EVENTS: Evt[] = [
     dateSort: '2026-09-27',
     time: '15h – 18h',
     venue: 'Square Trousseau, 12e',
-    category: 'Festivals',
+    category: 'Bals',
     image: kiosquesPosterImg,
     tag: 'Kiosques',
     description: "Bal forró en plein air avec initiation gratuite. Tout le monde est le bienvenu, aucune expérience requise.",
@@ -150,7 +150,7 @@ const EVENTS: Evt[] = [
     dateSort: '2025-11-21',
     time: '21h – 2h',
     venue: '19-21 rue Boyer, 75020 Paris',
-    category: 'Concerts',
+    category: 'Bals',
     image: event1Img,
     description: "Celia Neusa, Virginia Cambuci et Douglas Marcolino réunis pour une soirée forró roots d'exception. Initiation à 21h avec Marion Lima.",
   },
@@ -162,7 +162,7 @@ const EVENTS: Evt[] = [
     dateSort: '2026-04-17',
     time: '21h – 2h',
     venue: '19-21 rue Boyer, 75020 Paris',
-    category: 'Concerts',
+    category: 'Bals',
     image: event2Img,
     description: "Le Trio Muçambê, formation emblématique du forró universitaire brésilien, fait escale à Paris pour un concert-bal.",
   },
@@ -174,7 +174,7 @@ const EVENTS: Evt[] = [
     dateSort: '2026-03-20',
     time: '21h – 2h',
     venue: '19-21 rue Boyer, 75020 Paris',
-    category: 'Concerts',
+    category: 'Bals',
     image: event3Img,
     description: "Le groupe Moinho d'Agua apporte les rythmes du Nordeste brésilien au cœur de Paris. Soirée bal avec initiation par Marion Lima.",
   },
@@ -211,7 +211,7 @@ const EVENTS: Evt[] = [
     dateSort: '2026-09-19',
     time: '21h – 2h & plus',
     venue: '19-21 rue Boyer, 75020 Paris',
-    category: 'Concerts',
+    category: 'Bals',
     image: forrobodo20ansImg,
     tag: '20e Anniversaire',
     ticketUrl: 'https://www.helloasso.com/associations/le-p-tit-bal-perdu/evenements/forrobodo-special-20-ans-du-p-tit-bal-trio-exactamente',
@@ -233,17 +233,17 @@ const EVENTS: Evt[] = [
   },
 ]
 
-const FILTERS: Filter[] = ['Tous', 'Concerts', 'Ateliers', 'Stages', 'Festivals']
+const FILTERS: Filter[] = ['Tous', 'Bals', 'Ateliers', 'Stages', 'Festivals']
 
 const CAT_COLOR: Record<string, string> = {
-  Concerts: '#c9184a',
+  Bals:     '#c9184a',
   Ateliers: '#1aa0b8',
   Stages:   '#7c5cbf',
   Festivals:'#e09010',
 }
 
 const CAT_BG: Record<string, string> = {
-  Concerts: '#fce8ee',
+  Bals:     '#fce8ee',
   Ateliers: '#dff4f8',
   Stages:   '#ede8f8',
   Festivals:'#fdf2d8',
@@ -521,9 +521,9 @@ function EventCardGrid({ evt }: { evt: Evt }) {
         </div>
       </div>
       <div style={{ padding: '16px 18px 20px', flex: 1, display: 'flex', flexDirection: 'column', gap: 5 }}>
-        <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: 'var(--primary)', letterSpacing: '0.1em', textTransform: 'uppercase', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{evt.date}</p>
-        <h3 style={{ fontFamily: "'DM Serif Display', serif", fontSize: 17, color: 'var(--surface-foreground)', lineHeight: 1.15, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{evt.title}</h3>
-        <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 12, color: 'var(--muted-foreground)', lineHeight: 1.4, flexGrow: 1, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{evt.subtitle}</p>
+        <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: 'var(--primary)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{evt.date}</p>
+        <h3 style={{ fontFamily: "'DM Serif Display', serif", fontSize: 17, color: 'var(--surface-foreground)', lineHeight: 1.2 }}>{evt.title}</h3>
+        <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 12, color: 'var(--muted-foreground)', lineHeight: 1.4, flexGrow: 1, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{evt.subtitle}</p>
         <div style={{ display: 'flex', gap: 12, marginTop: 10, paddingTop: 12, borderTop: '1px solid var(--border)' }}>
           <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: 'var(--muted-foreground)', display: 'flex', alignItems: 'center', gap: 4 }}>
             <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><circle cx="5" cy="5" r="4" stroke="currentColor" strokeWidth="1"/><path d="M5 2.5v2.5l1.5 1" stroke="currentColor" strokeWidth="1" strokeLinecap="round"/></svg>

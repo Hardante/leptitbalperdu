@@ -12,6 +12,7 @@ import festJuninaImg    from '@/imports/IMG_6835.jpg'
 import marathonSaveImg  from '@/imports/WhatsApp_Image_2026-08-19_at_15.31.12.jpeg'
 import kiosquesPosterImg from '@/imports/WhatsApp_Image_2026-08-19_at_15.18.41.jpeg'
 import portesOuvertesImg  from '@/imports/WhatsApp_Image_2026-08-18_at_16.53.50.jpeg'
+import rentreeImg         from '@/imports/WhatsApp_Image_2026-08-21_at_10.31.44.jpeg'
 import forrobodo20ansImg  from '@/imports/WhatsApp_Image_2026-08-19_at_11.51.20.jpeg'
 import courseDanseImg    from '@/imports/WhatsApp_Image_2026-08-18_at_17.04.07.jpeg'
 
@@ -49,6 +50,19 @@ const EVENTS: Evt[] = [
     image: festJuninaImg,
     tag: 'Festa Junina',
     description: "La soirée bal mensuelle avec initiation à la danse à 21h par Marion Lima, suivie d'un concert live. Bel Air de Forró reçoit Mytho Roots pour une Festa Junina explosive.",
+  },
+  {
+    id: 10,
+    title: 'Rentrée & Portes Ouvertes',
+    subtitle: 'Cours de Forró avec Marion Lima',
+    date: '15, 17, 22 & 24 septembre 2026',
+    dateSort: '2026-09-15',
+    time: '19h30 – 22h30',
+    venue: 'Studio des Rigoles, 46 rue des Rigoles, 75020',
+    category: 'Ateliers',
+    image: rentreeImg,
+    tag: '1er cours gratuit',
+    description: "Portes ouvertes pour la rentrée ! Venez découvrir ou redécouvrir les cours de forró avec Marion Lima. Tous niveaux, débutants bienvenus. 1er cours offert — les 15 & 17 septembre pour les mardis/jeudis, les 22 & 24 pour une 2e session.",
   },
   {
     id: 201,
@@ -362,130 +376,58 @@ function Hero() {
         <div style={{ position: 'absolute', bottom: '15%', left: 0, width: '35%', height: '40%', background: 'radial-gradient(ellipse at bottom left, rgba(201,24,74,0.14) 0%, transparent 65%)', pointerEvents: 'none' }} />
       </div>
 
+      {/* Éléments graphiques de la charte — visibles en overlay sur la photo */}
       <svg aria-hidden viewBox="0 0 1000 680" preserveAspectRatio="xMidYMid slice"
-        style={{ display: 'none' }}>
+        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', zIndex: 1, pointerEvents: 'none' }}>
 
-        {/* Helper: chrysanthemum burst — dense evenly-spaced spokes, dot tips, halo ring of dots */}
-        {/* BURST 1 — grand or, haut-droite */}
-        <g transform="translate(830,115)">
-          {Array.from({length:24},(_,i)=>{const a=(i*15-90)*Math.PI/180;const r1=i%2===0?88:72;return(
-            <line key={i} x1={Math.cos(a)*12} y1={Math.sin(a)*12} x2={Math.cos(a)*r1} y2={Math.sin(a)*r1}
-              stroke="#f5c218" strokeWidth={i%2===0?2:1.5} strokeLinecap="round" opacity={i%2===0?0.92:0.68}/>
-          );})}
-          {Array.from({length:24},(_,i)=>{const a=(i*15-90)*Math.PI/180;const r=i%2===0?88:72;return(
-            <circle key={i} cx={Math.cos(a)*r} cy={Math.sin(a)*r} r={i%2===0?3.5:2.5} fill="#f5c218" opacity={i%2===0?0.9:0.7}/>
-          );})}
-          {/* halo dot ring */}
-          {Array.from({length:20},(_,i)=>{const a=(i*18-90)*Math.PI/180;return(
-            <circle key={i} cx={Math.cos(a)*104} cy={Math.sin(a)*104} r="2.5" fill="#ffdd44" opacity="0.6"/>
-          );})}
-          {Array.from({length:14},(_,i)=>{const a=(i*25.7-90)*Math.PI/180;return(
-            <circle key={i} cx={Math.cos(a)*118} cy={Math.sin(a)*118} r="1.5" fill="#f5c218" opacity="0.4"/>
-          );})}
-          <circle r="10" fill="#fff8c0" opacity="0.98"/>
-          <circle r="5"  fill="#ffffff" opacity="0.9"/>
+        {/* Grand starburst magenta — droite, mi-hauteur */}
+        <g transform="translate(880,380)" opacity="0.55">
+          {Array.from({length:16},(_,i)=>{
+            const a=(i*(360/16))*Math.PI/180
+            const r=i%2===0?160:90
+            const w=i%2===0?18:10
+            return <polygon key={i}
+              points={`${Math.cos(a-0.12)*18},${Math.sin(a-0.12)*18} ${Math.cos(a)*r},${Math.sin(a)*r} ${Math.cos(a+0.12)*18},${Math.sin(a+0.12)*18}`}
+              fill={i%2===0?"#e8186d":"#ff4d9a"} />
+          })}
+          <circle r="20" fill="#e8186d"/>
+          <circle r="10" fill="#ff80b5" opacity="0.9"/>
         </g>
 
-        {/* BURST 2 — rose/magenta, droite-centre */}
-        <g transform="translate(940,290)">
-          {Array.from({length:20},(_,i)=>{const a=(i*18-90)*Math.PI/180;const r1=i%2===0?72:58;return(
-            <line key={i} x1={Math.cos(a)*10} y1={Math.sin(a)*10} x2={Math.cos(a)*r1} y2={Math.sin(a)*r1}
-              stroke="#e8186d" strokeWidth={i%2===0?2:1.5} strokeLinecap="round" opacity={i%2===0?0.92:0.65}/>
-          );})}
-          {Array.from({length:20},(_,i)=>{const a=(i*18-90)*Math.PI/180;const r=i%2===0?72:58;return(
-            <circle key={i} cx={Math.cos(a)*r} cy={Math.sin(a)*r} r={i%2===0?3:2} fill="#ff4d8f" opacity={i%2===0?0.9:0.65}/>
-          );})}
-          {Array.from({length:16},(_,i)=>{const a=(i*22.5-90)*Math.PI/180;return(
-            <circle key={i} cx={Math.cos(a)*86} cy={Math.sin(a)*86} r="2.5" fill="#e8186d" opacity="0.55"/>
-          );})}
-          <circle r="8" fill="#ff4d8f" opacity="0.98"/>
-          <circle r="4" fill="#ffffff" opacity="0.85"/>
+        {/* Fan burst cyan — haut-centre */}
+        <g transform="translate(420,0)" opacity="0.5">
+          {Array.from({length:14},(_,i)=>{
+            const a=(-70+i*10)*Math.PI/180
+            const r=160, w=14
+            const x1=Math.cos(a)*30, y1=Math.sin(a)*30
+            const x2=Math.cos(a-0.05)*r, y2=Math.sin(a-0.05)*r
+            const x3=Math.cos(a+0.05)*r, y3=Math.sin(a+0.05)*r
+            return <polygon key={i} points={`${x1},${y1} ${x2},${y2} ${x3},${y3}`} fill="#3fc8e4"/>
+          })}
         </g>
 
-        {/* BURST 3 — cyan, haut-centre-droit */}
-        <g transform="translate(700,160)">
-          {Array.from({length:18},(_,i)=>{const a=(i*20-90)*Math.PI/180;const r1=i%2===0?62:50;return(
-            <line key={i} x1={Math.cos(a)*9} y1={Math.sin(a)*9} x2={Math.cos(a)*r1} y2={Math.sin(a)*r1}
-              stroke="#3fc8e4" strokeWidth={i%2===0?2:1.5} strokeLinecap="round" opacity={i%2===0?0.9:0.62}/>
-          );})}
-          {Array.from({length:18},(_,i)=>{const a=(i*20-90)*Math.PI/180;const r=i%2===0?62:50;return(
-            <circle key={i} cx={Math.cos(a)*r} cy={Math.sin(a)*r} r={i%2===0?2.5:1.8} fill="#7de8f8" opacity={i%2===0?0.88:0.62}/>
-          );})}
-          {Array.from({length:14},(_,i)=>{const a=(i*25.7-90)*Math.PI/180;return(
-            <circle key={i} cx={Math.cos(a)*76} cy={Math.sin(a)*76} r="2" fill="#3fc8e4" opacity="0.5"/>
-          );})}
-          <circle r="7" fill="#7de8f8" opacity="0.98"/>
-          <circle r="3.5" fill="#ffffff" opacity="0.85"/>
+        {/* Petit starburst cyan — gauche bas */}
+        <g transform="translate(120,520)" opacity="0.45">
+          {Array.from({length:10},(_,i)=>{
+            const a=(i*(360/10))*Math.PI/180
+            const r=i%2===0?52:28
+            return <polygon key={i}
+              points={`${Math.cos(a-0.15)*8},${Math.sin(a-0.15)*8} ${Math.cos(a)*r},${Math.sin(a)*r} ${Math.cos(a+0.15)*8},${Math.sin(a+0.15)*8}`}
+              fill="#3fc8e4"/>
+          })}
+          <circle r="8" fill="#7de8f8"/>
         </g>
 
-        {/* BURST 4 — blanc/argent, centre-droit */}
-        <g transform="translate(870,380)">
-          {Array.from({length:22},(_,i)=>{const a=(i*(360/22)-90)*Math.PI/180;const r1=i%2===0?66:52;return(
-            <line key={i} x1={Math.cos(a)*9} y1={Math.sin(a)*9} x2={Math.cos(a)*r1} y2={Math.sin(a)*r1}
-              stroke="#f0e8ff" strokeWidth={i%2===0?2:1.5} strokeLinecap="round" opacity={i%2===0?0.85:0.6}/>
-          );})}
-          {Array.from({length:22},(_,i)=>{const a=(i*(360/22)-90)*Math.PI/180;const r=i%2===0?66:52;return(
-            <circle key={i} cx={Math.cos(a)*r} cy={Math.sin(a)*r} r={i%2===0?2.5:1.8} fill="#d8b8ff" opacity={i%2===0?0.85:0.6}/>
-          );})}
-          {Array.from({length:12},(_,i)=>{const a=(i*30-90)*Math.PI/180;return(
-            <circle key={i} cx={Math.cos(a)*80} cy={Math.sin(a)*80} r="2" fill="#f0e8ff" opacity="0.5"/>
-          );})}
-          <circle r="7" fill="#f0e8ff" opacity="0.95"/>
-          <circle r="3" fill="#ffffff" opacity="0.9"/>
-        </g>
-
-        {/* BURST 5 — petit or, gauche */}
-        <g transform="translate(62,260)">
-          {Array.from({length:16},(_,i)=>{const a=(i*22.5-90)*Math.PI/180;const r1=i%2===0?50:40;return(
-            <line key={i} x1={Math.cos(a)*8} y1={Math.sin(a)*8} x2={Math.cos(a)*r1} y2={Math.sin(a)*r1}
-              stroke="#f5c218" strokeWidth={i%2===0?2:1.5} strokeLinecap="round" opacity={i%2===0?0.88:0.62}/>
-          );})}
-          {Array.from({length:16},(_,i)=>{const a=(i*22.5-90)*Math.PI/180;const r=i%2===0?50:40;return(
-            <circle key={i} cx={Math.cos(a)*r} cy={Math.sin(a)*r} r={i%2===0?2.5:1.8} fill="#ffdd44" opacity={i%2===0?0.85:0.6}/>
-          );})}
-          {Array.from({length:10},(_,i)=>{const a=(i*36-90)*Math.PI/180;return(
-            <circle key={i} cx={Math.cos(a)*62} cy={Math.sin(a)*62} r="2" fill="#f5c218" opacity="0.48"/>
-          );})}
-          <circle r="6" fill="#fff8c0" opacity="0.95"/>
-        </g>
-
-        {/* BURST 6 — petit rose, haut-gauche */}
-        <g transform="translate(190,68)">
-          {Array.from({length:14},(_,i)=>{const a=(i*(360/14)-90)*Math.PI/180;const r1=i%2===0?42:33;return(
-            <line key={i} x1={Math.cos(a)*7} y1={Math.sin(a)*7} x2={Math.cos(a)*r1} y2={Math.sin(a)*r1}
-              stroke="#e8186d" strokeWidth={i%2===0?2:1.5} strokeLinecap="round" opacity={i%2===0?0.85:0.6}/>
-          );})}
-          {Array.from({length:14},(_,i)=>{const a=(i*(360/14)-90)*Math.PI/180;const r=i%2===0?42:33;return(
-            <circle key={i} cx={Math.cos(a)*r} cy={Math.sin(a)*r} r={i%2===0?2.2:1.5} fill="#ff4d8f" opacity={i%2===0?0.82:0.58}/>
-          );})}
-          <circle r="5" fill="#ff4d8f" opacity="0.95"/>
-        </g>
-
-        {/* Floating 4-pointed stars scattered around */}
+        {/* Étoiles éparpillées */}
         {([
-          [760,60,'#f5c218',14],[968,200,'#e8186d',12],[650,230,'#3fc8e4',10],
-          [980,430,'#f5c218',9],[130,160,'#3fc8e4',8],[310,90,'#e8186d',8],
-          [540,110,'#f5c218',7],[450,55,'#3fc8e4',6],[970,110,'#ffdd44',8],
-          [20,390,'#f5c218',7],[960,490,'#3fc8e4',6],
+          [760,60,'#f5c218',12],[920,180,'#e8186d',10],[650,200,'#3fc8e4',8],
+          [130,150,'#c8e43f',9],[310,80,'#e8186d',7],[540,120,'#f5c218',6],
+          [200,480,'#3fc8e4',7],[80,300,'#f5c218',8],[950,450,'#e8186d',7],
+          [460,50,'#c8e43f',6],[700,500,'#f5c218',5],[300,380,'#3fc8e4',6],
         ] as [number,number,string,number][]).map(([cx,cy,fill,sz],i) => (
-          <g key={i} transform={`translate(${cx},${cy})`}>
-            <line x1="0" y1={-sz} x2="0" y2={sz}  stroke={fill} strokeWidth="1.5" strokeLinecap="round" opacity="0.85"/>
-            <line x1={-sz} y1="0" x2={sz} y2="0"  stroke={fill} strokeWidth="1.5" strokeLinecap="round" opacity="0.85"/>
-            <line x1={-sz*.6} y1={-sz*.6} x2={sz*.6} y2={sz*.6} stroke={fill} strokeWidth="1" strokeLinecap="round" opacity="0.6"/>
-            <line x1={sz*.6} y1={-sz*.6} x2={-sz*.6} y2={sz*.6} stroke={fill} strokeWidth="1" strokeLinecap="round" opacity="0.6"/>
-            <circle r={sz*.22} fill={fill} opacity="0.9"/>
+          <g key={i} transform={`translate(${cx},${cy})`} opacity="0.75">
+            <polygon points={`0,${-sz} ${sz*0.25},${-sz*0.25} ${sz},0 ${sz*0.25},${sz*0.25} 0,${sz} ${-sz*0.25},${sz*0.25} ${-sz},0 ${-sz*0.25},${-sz*0.25}`} fill={fill}/>
           </g>
-        ))}
-
-        {/* Dot confetti clouds between bursts */}
-        {([
-          [770,82,2.5,'#f5c218'],[742,130,2,'#ffdd44'],[882,50,2,'#f5c218'],
-          [920,160,3,'#ffdd44'],[958,350,2.5,'#e8186d'],[998,260,2,'#f0e8ff'],
-          [610,90,2,'#3fc8e4'],[490,140,2.5,'#f5c218'],[365,60,2,'#e8186d'],
-          [28,310,2,'#f5c218'],[96,380,2.5,'#3fc8e4'],[42,180,2,'#ffdd44'],
-          [130,330,2,'#e8186d'],[230,200,2,'#3fc8e4'],[300,140,2.5,'#f5c218'],
-        ] as [number,number,number,string][]).map(([cx,cy,r,fill],i) => (
-          <circle key={i} cx={cx} cy={cy} r={r} fill={fill} opacity="0.65"/>
         ))}
       </svg>
 
@@ -502,7 +444,7 @@ function Hero() {
           </h1>
 
           <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 16, lineHeight: 1.7, color: 'rgba(245,237,214,0.78)', maxWidth: 460, marginBottom: 34, fontWeight: 300, animation: 'fadeUp 0.7s 0.2s ease both' }}>
-            Depuis bientôt vingt ans, Le P'tit Bal Perdu fait vivre à Paris les cultures populaires brésiliennes — forró, chant, bals, cours et rencontres.
+            Depuis plus de 20 ans, Le P'tit Bal Perdu fait vivre à Paris les cultures populaires brésiliennes — forró, chant, bals, cours et rencontres.
           </p>
 
           <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', animation: 'fadeUp 0.7s 0.3s ease both' }}>
@@ -723,10 +665,10 @@ function CoursesSection() {
               <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: '0.14em', color: 'var(--accent)', textTransform: 'uppercase', margin: '0 0 6px' }}>Chorale · Chant</p>
               <h3 style={{ fontFamily: "'DM Serif Display', serif", fontSize: 24, color: 'var(--foreground)', margin: '0 0 10px' }}>La Chorale du P'tit Bal</h3>
               <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, color: 'rgba(245,237,214,0.5)', margin: '0 0 12px' }}>
-                Répétitions hebdomadaires · Depuis 2012
+                Lundis 19h30 – 21h · 31 rue Petit, 75019 Paris
               </p>
               <p style={{ color: 'var(--muted-foreground)', fontSize: 14, lineHeight: 1.7, margin: 0, fontWeight: 300 }}>
-                Chanter en portugais les classiques du Nordeste brésilien — forró, baião, xaxado. Aucune expérience requise. La chorale répète chaque semaine et se produit au Forrobodó. Une façon de rentrer dans la musique par la voix.
+                Chanter en portugais les classiques du Nordeste brésilien — forró, baião, xaxado. Aucune expérience requise. La chorale répète chaque lundi et se produit au Forrobodó. Une façon de rentrer dans la musique par la voix.
               </p>
             </div>
             <a href="https://www.helloasso.com/associations/le-p-tit-bal-perdu/evenements/la-chorale-du-p-tit-bal-2024-25"
@@ -738,7 +680,7 @@ function CoursesSection() {
               <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H4M11 1V8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
             </a>
             <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, borderRadius: 8, overflow: 'hidden', boxShadow: '0 6px 32px rgba(0,0,0,0.5)' }}>
-              <iframe src="https://www.youtube.com/embed/2w8yZyMbIag?rel=0&modestbranding=1" title="La chorale du P'tit Bal"
+              <iframe src="https://www.youtube.com/embed/DbBhgCusw88?rel=0&modestbranding=1" title="La chorale du P'tit Bal"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen
                 style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 'none' }} />
             </div>
@@ -876,7 +818,7 @@ function AboutSection() {
         <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0 24px' }}>
           <blockquote style={{ textAlign: 'center', maxWidth: 720 }}>
             <p style={{ fontFamily: "'DM Serif Display', serif", fontSize: 'clamp(18px,3.5vw,34px)', color: 'var(--foreground)', lineHeight: 1.35, fontStyle: 'italic', margin: '0 0 16px' }}>
-              "Ouvert aux curieux comme aux danseurs confirmés — un bal vivant où l'on vient découvrir une culture, trouver sa place dans la musique, et repartir avec l'envie de revenir."
+              « Ouvert aux curieux comme aux danseurs confirmés, c'est un bal vivant : on y découvre une culture, on y trouve sa place, et on en repart avec une seule envie — y retourner. »
             </p>
             <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 12, color: 'var(--primary)', letterSpacing: '0.1em', margin: 0 }}>— Marion</p>
           </blockquote>
@@ -928,7 +870,6 @@ function AboutSection() {
               <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: '0.14em', color: 'var(--muted-foreground)', textTransform: 'uppercase', marginBottom: 10 }}>En savoir plus sur Marion et l'association</p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
                 {([
-                  { label: "Les arcanes du forró pour les folkeux", src: "Creactiviste", url: 'https://www.creactiviste.fr/2021/02/les-arcanes-du-forro-pour-les-folkeux/' },
                   { label: "Podcast Pau de Arara — forró em Paris", src: "Apple Podcasts", url: 'https://podcasts.apple.com/fr/podcast/pau-de-arara/id1547861331?l=en-GB' },
                   { label: "Un voyage au Brésil par le chant et la danse", src: "Cap Magellan", url: 'https://capmagellan.com/le-ptit-bal-perdu-un-voyage-au-bresil-par-le-chant-et-la-danse/' },
                   { label: "Le forró en vidéo", src: "YouTube", url: 'https://www.youtube.com/watch?v=MdO_jhIrOtk' },
@@ -982,7 +923,7 @@ function Footer() {
           <div>
             <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: '0.14em', color: 'rgba(245,237,214,0.35)', textTransform: 'uppercase', marginBottom: 18 }}>Navigation</p>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 12 }}>
-              {[['#','Accueil'],['#agenda','Agenda'],['#histoire','Notre histoire'],['#contact','Contact']].map(([href,label]) => (
+              {[['#','Accueil'],['#cours','Cours'],['#agenda','Agenda'],['#histoire','Notre histoire'],['#contact','Contact']].map(([href,label]) => (
                 <li key={href}><a href={href} style={{ fontFamily: "'Inter', sans-serif", fontSize: 14, color: 'rgba(245,237,214,0.45)', textDecoration: 'none', transition: 'color 0.2s' }}
                   onMouseEnter={e => (e.currentTarget.style.color='var(--foreground)')}
                   onMouseLeave={e => (e.currentTarget.style.color='rgba(245,237,214,0.45)')}>{label}</a></li>
@@ -995,6 +936,7 @@ function Footer() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
               <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 14, color: 'rgba(245,237,214,0.45)', fontWeight: 300 }}>46 rue des Rigoles<br />75020 Paris 20e</p>
               {[
+                { href: 'https://chat.whatsapp.com/GYarf3uIY2UCgv93K1Bywi', label: 'Groupe WhatsApp', icon: 'wa' },
                 { href: 'https://instagram.com/leptitbalperdu', label: '@leptitbalperdu', icon: 'ig' },
                 { href: 'https://instagram.com/marionpbp', label: '@marionpbp', icon: 'ig' },
                 { href: 'https://instagram.com/naopara.marathon', label: '@naopara.marathon', icon: 'ig' },
@@ -1007,6 +949,8 @@ function Footer() {
                   onMouseLeave={e => (e.currentTarget.style.color='rgba(245,237,214,0.45)')}>
                   {l.icon === 'ig'
                     ? <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+                    : l.icon === 'wa'
+                    ? <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                     : <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3l-.5 3H13v6.8c4.56-.93 8-4.96 8-9.8z"/></svg>
                   }
                   {l.label}
@@ -1240,6 +1184,22 @@ export default function App() {
       <EventsSection />
       <AboutSection />
       <TestimonialsSection />
+
+      {/* Bandeau adhésion */}
+      <div style={{ background: 'var(--surface)', borderTop: '1px solid var(--border)' }}>
+        <div style={{ maxWidth: 1200, margin: '0 auto', padding: '28px 24px', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 16 }}>
+          <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 14, color: 'var(--muted-foreground)', lineHeight: 1.6, margin: 0, maxWidth: 680, fontWeight: 300 }}>
+            <span style={{ fontFamily: "'DM Serif Display', serif", color: 'var(--surface-foreground)', fontSize: 15, fontWeight: 400 }}>L'adhésion à l'association</span> — 10 € / an — vous donne accès aux soirées Forrobodó et soutient le développement de la culture brésilienne à Paris depuis plus de 20 ans.
+          </p>
+          <a href="https://www.helloasso.com/associations/le-p-tit-bal-perdu" target="_blank" rel="noopener noreferrer"
+            style={{ display: 'inline-flex', alignItems: 'center', gap: 7, border: '1.5px solid var(--primary)', color: 'var(--primary)', padding: '9px 18px', borderRadius: 4, fontFamily: "'DM Mono', monospace", fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textDecoration: 'none', transition: 'background 0.2s, color 0.2s', whiteSpace: 'nowrap', flexShrink: 0 }}
+            onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.background='var(--primary)'; el.style.color='#1a0e00' }}
+            onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.background='transparent'; el.style.color='var(--primary)' }}>
+            Adhérer sur HelloAsso
+            <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H4M11 1V8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
 
       <Footer />
       <MembershipBadge />

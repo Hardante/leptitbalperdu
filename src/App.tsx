@@ -422,10 +422,10 @@ function Hero() {
 
         {/* Étoiles éparpillées */}
         {([
-          [760,60,'#f5c218',12],[920,180,'#e8186d',10],[650,200,'#3fc8e4',8],
-          [130,150,'#c8e43f',9],[310,80,'#e8186d',7],[540,120,'#f5c218',6],
-          [200,480,'#3fc8e4',7],[80,300,'#f5c218',8],[950,450,'#e8186d',7],
-          [460,50,'#c8e43f',6],[700,500,'#f5c218',5],[300,380,'#3fc8e4',6],
+          [760,55,'#f5c218',12],[920,170,'#e8186d',10],[680,130,'#3fc8e4',8],
+          [860,70,'#c8e43f',9],[310,75,'#e8186d',7],[560,100,'#f5c218',6],
+          [820,500,'#3fc8e4',7],[950,310,'#f5c218',8],[970,450,'#e8186d',7],
+          [460,45,'#c8e43f',6],[730,490,'#f5c218',5],[880,250,'#3fc8e4',6],
         ] as [number,number,string,number][]).map(([cx,cy,fill,sz],i) => (
           <g key={i} transform={`translate(${cx},${cy})`} opacity="0.75">
             <polygon points={`0,${-sz} ${sz*0.25},${-sz*0.25} ${sz},0 ${sz*0.25},${sz*0.25} 0,${sz} ${-sz*0.25},${sz*0.25} ${-sz},0 ${-sz*0.25},${-sz*0.25}`} fill={fill}/>
@@ -437,7 +437,7 @@ function Hero() {
       <div style={{ position: 'relative', zIndex: 2, flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', maxWidth: 1200, margin: '0 auto', width: '100%', padding: '100px 24px 48px' }}>
         <div style={{ maxWidth: 580 }}>
           <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: '0.18em', color: 'var(--primary)', textTransform: 'uppercase', marginBottom: 20, animation: 'fadeUp 0.5s ease both', fontWeight: 700, textShadow: '0 1px 8px rgba(0,0,0,0.7)' }}>
-            Forró em Paris — depuis 2006 · 20 ans déjà
+            Forró em Paris — 20 ans déjà
           </p>
 
           <h1 style={{ fontFamily: "'DM Serif Display', serif", lineHeight: 0.9, marginBottom: 26, animation: 'fadeUp 0.7s 0.1s ease both' }}>

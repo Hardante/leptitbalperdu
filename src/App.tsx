@@ -437,7 +437,7 @@ function Hero() {
       <div style={{ position: 'relative', zIndex: 2, flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', maxWidth: 1200, margin: '0 auto', width: '100%', padding: '100px 24px 48px' }}>
         <div style={{ maxWidth: 580 }}>
           <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: '0.18em', color: 'var(--primary)', textTransform: 'uppercase', marginBottom: 20, animation: 'fadeUp 0.5s ease both', fontWeight: 700, textShadow: '0 1px 8px rgba(0,0,0,0.7)' }}>
-            Forró em Paris — depuis 2006
+            Forró em Paris — depuis 2006 · 20 ans déjà
           </p>
 
           <h1 style={{ fontFamily: "'DM Serif Display', serif", lineHeight: 0.9, marginBottom: 26, animation: 'fadeUp 0.7s 0.1s ease both' }}>
@@ -923,13 +923,6 @@ function Footer() {
             <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 14, color: 'rgba(245,237,214,0.5)', lineHeight: 1.65, maxWidth: 280, fontWeight: 300 }}>
               Association loi 1901 dédiée au forró et à la culture brésilienne à Paris depuis 2006.
             </p>
-            <a href="mailto:leptitbalperdu@gmail.com"
-              style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginTop: 14, fontFamily: "'DM Mono', monospace", fontSize: 11, color: 'rgba(245,237,214,0.5)', textDecoration: 'none', transition: 'color 0.2s' }}
-              onMouseEnter={e => (e.currentTarget.style.color='var(--secondary)')}
-              onMouseLeave={e => (e.currentTarget.style.color='rgba(245,237,214,0.5)')}>
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-              leptitbalperdu@gmail.com
-            </a>
           </div>
 
           <div>
@@ -1201,7 +1194,7 @@ export default function App() {
       <div style={{ background: 'var(--surface)', borderTop: '1px solid var(--border)' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto', padding: '28px 24px', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 16 }}>
           <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 14, color: 'var(--muted-foreground)', lineHeight: 1.6, margin: 0, maxWidth: 680, fontWeight: 300 }}>
-            <span style={{ fontFamily: "'DM Serif Display', serif", color: 'var(--surface-foreground)', fontSize: 15, fontWeight: 400 }}>L'adhésion à l'association</span> — 10 € / an — vous donne accès aux soirées Forrobodó et soutient le développement de la culture brésilienne à Paris depuis plus de 20 ans.
+            <span style={{ fontFamily: "'DM Serif Display', serif", color: 'var(--surface-foreground)', fontSize: 15, fontWeight: 400 }}>L'adhésion à l'association</span> — 10 € / an — vous donne accès aux soirées Forrobodó et soutient le développement de la culture brésilienne à Paris.
           </p>
           <a href="https://www.helloasso.com/associations/le-p-tit-bal-perdu" target="_blank" rel="noopener noreferrer"
             style={{ display: 'inline-flex', alignItems: 'center', gap: 7, border: '1.5px solid var(--primary)', color: 'var(--primary)', padding: '9px 18px', borderRadius: 4, fontFamily: "'DM Mono', monospace", fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textDecoration: 'none', transition: 'background 0.2s, color 0.2s', whiteSpace: 'nowrap', flexShrink: 0 }}

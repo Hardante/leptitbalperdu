@@ -638,11 +638,8 @@ function CoursesSection() {
               <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, color: 'rgba(245,237,214,0.5)', margin: '0 0 12px' }}>
                 Mardis & jeudis · Studio des Rigoles, 75020
               </p>
-              <p style={{ color: 'var(--muted-foreground)', fontSize: 13, lineHeight: 1.65, margin: '0 0 8px', fontWeight: 300 }}>
-                Deux cours se suivent chaque soir : <strong style={{ color: 'rgba(245,237,214,0.7)', fontWeight: 500 }}>19h30 – 21h</strong> et <strong style={{ color: 'rgba(245,237,214,0.7)', fontWeight: 500 }}>21h – 22h30</strong> — choisissez l'un ou les deux.
-              </p>
               <p style={{ color: 'var(--muted-foreground)', fontSize: 14, lineHeight: 1.7, margin: 0, fontWeight: 300 }}>
-                Du débutant à l'avancé, les cours couvrent les pas de base, les figures de bal, le travail d'abraço, la musicalité et les rythmes du Nordeste. Ateliers thématiques le jeudi pour les emplois du temps irréguliers.
+                Deux cours se suivent chaque soir (<strong style={{ color: 'rgba(245,237,214,0.7)', fontWeight: 500 }}>19h30 – 21h</strong> et <strong style={{ color: 'rgba(245,237,214,0.7)', fontWeight: 500 }}>21h – 22h30</strong>), du débutant à l'avancé : pas de base, figures de bal, abraço, musicalité et rythmes du Nordeste. Ateliers thématiques le jeudi.
               </p>
             </div>
             <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 10 }}>

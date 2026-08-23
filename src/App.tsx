@@ -928,7 +928,7 @@ function Footer() {
           <div>
             <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: '0.14em', color: 'rgba(245,237,214,0.35)', textTransform: 'uppercase', marginBottom: 18 }}>Navigation</p>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 12 }}>
-              {[['#','Accueil'],['#cours','Cours'],['#agenda','Agenda'],['#histoire','Notre histoire'],['#contact','Contact']].map(([href,label]) => (
+              {[['#','Accueil'],['#cours','Cours'],['#agenda','Agenda'],['#histoire','Notre histoire']].map(([href,label]) => (
                 <li key={href}><a href={href} style={{ fontFamily: "'Inter', sans-serif", fontSize: 14, color: 'rgba(245,237,214,0.45)', textDecoration: 'none', transition: 'color 0.2s' }}
                   onMouseEnter={e => (e.currentTarget.style.color='var(--foreground)')}
                   onMouseLeave={e => (e.currentTarget.style.color='rgba(245,237,214,0.45)')}>{label}</a></li>
@@ -1194,7 +1194,7 @@ export default function App() {
       <div style={{ background: 'var(--surface)', borderTop: '1px solid var(--border)' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto', padding: '28px 24px', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 16 }}>
           <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 14, color: 'var(--muted-foreground)', lineHeight: 1.6, margin: 0, maxWidth: 680, fontWeight: 300 }}>
-            <span style={{ fontFamily: "'DM Serif Display', serif", color: 'var(--surface-foreground)', fontSize: 15, fontWeight: 400 }}>L'adhésion à l'association</span> — 10 € / an — vous donne accès aux soirées Forrobodó et soutient le développement de la culture brésilienne à Paris.
+            <span style={{ fontFamily: "'DM Serif Display', serif", color: 'var(--surface-foreground)', fontSize: 15, fontWeight: 400 }}>L'adhésion à l'association</span> — 5 € / an — vous donne accès aux soirées Forrobodó et soutient le développement de la culture brésilienne à Paris.
           </p>
           <a href="https://www.helloasso.com/associations/le-p-tit-bal-perdu" target="_blank" rel="noopener noreferrer"
             style={{ display: 'inline-flex', alignItems: 'center', gap: 7, border: '1.5px solid var(--primary)', color: 'var(--primary)', padding: '9px 18px', borderRadius: 4, fontFamily: "'DM Mono', monospace", fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textDecoration: 'none', transition: 'background 0.2s, color 0.2s', whiteSpace: 'nowrap', flexShrink: 0 }}

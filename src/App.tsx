@@ -62,7 +62,7 @@ const EVENTS: Evt[] = [
     category: 'Cours & Ateliers',
     image: rentreeImg,
     tag: '1er cours gratuit',
-    description: "Portes ouvertes pour la rentrée ! Venez découvrir ou redécouvrir les cours de forró avec Marion Lima. Tous niveaux, débutants bienvenus. 1er cours offert — les 15 & 17 septembre pour les mardis/jeudis, les 22 & 24 pour une 2e session.",
+    description: "Portes ouvertes pour la rentrée ! Venez découvrir ou redécouvrir les cours de forró avec Marion Lima. Tous niveaux, débutants bienvenus. Premier cours offert pour les nouvelles personnes — les 15 & 17 septembre pour les mardis/jeudis, les 22 & 24 pour une 2e session.",
   },
   {
     id: 201,
@@ -75,7 +75,7 @@ const EVENTS: Evt[] = [
     category: 'Bals',
     image: kiosquesPosterImg,
     tag: 'Kiosques',
-    description: "Bal forró en plein air avec initiation gratuite. Tout le monde est le bienvenu, aucune expérience requise.",
+    description: "Bal forró en plein air, ouvert à tous. Aucune expérience requise — venez danser !",
   },
   {
     id: 202,
@@ -88,7 +88,7 @@ const EVENTS: Evt[] = [
     category: 'Bals',
     image: kiosquesPosterImg,
     tag: 'Kiosques',
-    description: "Bal forró en plein air avec initiation gratuite. Tout le monde est le bienvenu, aucune expérience requise.",
+    description: "Bal forró en plein air, ouvert à tous. Aucune expérience requise — venez danser !",
   },
   {
     id: 203,
@@ -101,7 +101,7 @@ const EVENTS: Evt[] = [
     category: 'Bals',
     image: kiosquesPosterImg,
     tag: 'Kiosques',
-    description: "Bal forró en plein air avec initiation gratuite. Tout le monde est le bienvenu, aucune expérience requise.",
+    description: "Bal forró en plein air, ouvert à tous. Aucune expérience requise — venez danser !",
   },
   {
     id: 204,
@@ -114,7 +114,7 @@ const EVENTS: Evt[] = [
     category: 'Bals',
     image: kiosquesPosterImg,
     tag: 'Kiosques',
-    description: "Bal forró en plein air avec initiation gratuite. Tout le monde est le bienvenu, aucune expérience requise.",
+    description: "Bal forró en plein air, ouvert à tous. Aucune expérience requise — venez danser !",
   },
   {
     id: 205,
@@ -127,7 +127,7 @@ const EVENTS: Evt[] = [
     category: 'Bals',
     image: kiosquesPosterImg,
     tag: 'Kiosques',
-    description: "Bal forró en plein air avec initiation gratuite. Tout le monde est le bienvenu, aucune expérience requise.",
+    description: "Bal forró en plein air, ouvert à tous. Aucune expérience requise — venez danser !",
   },
   {
     id: 206,
@@ -140,7 +140,7 @@ const EVENTS: Evt[] = [
     category: 'Bals',
     image: kiosquesPosterImg,
     tag: 'Kiosques',
-    description: "Bal forró en plein air avec initiation gratuite. Tout le monde est le bienvenu, aucune expérience requise.",
+    description: "Bal forró en plein air, ouvert à tous. Aucune expérience requise — venez danser !",
   },
   {
     id: 3,
@@ -223,13 +223,13 @@ const EVENTS: Evt[] = [
     subtitle: 'Não Para, Não Para, Não Para...',
     date: '13 – 14 – 15 novembre 2026',
     dateSort: '2026-11-13',
-    time: '3 jours continus',
+    time: '48h continus',
     venue: 'Paris — lieu à confirmer',
     category: 'Festivals',
     image: marathonSaveImg,
     tag: '20e Anniversaire',
     ticketUrl: 'https://www.helloasso.com/associations/le-p-tit-bal-perdu/evenements/nao-para-nao-para-nao-para-4eme-marathon-de-paris',
-    description: "Le grand marathon anniversaire : 72 heures de forró, de rencontres et de danse pour célébrer les 20 ans du P'tit Bal Perdu.",
+    description: "Le grand marathon anniversaire : 48 heures de forró, de rencontres et de danse pour célébrer les 20 ans du P'tit Bal Perdu.",
   },
 ]
 
@@ -332,6 +332,7 @@ function Nav() {
 
       <style>{`
         @media (max-width: 768px) { .desk-nav { display:none !important; } .mob-btn { display:block !important; } }
+        @media (max-width: 768px) { .hero-deco { display:none !important; } }
       `}</style>
     </header>
   )
@@ -376,8 +377,9 @@ function Hero() {
         <div style={{ position: 'absolute', bottom: '15%', left: 0, width: '35%', height: '40%', background: 'radial-gradient(ellipse at bottom left, rgba(201,24,74,0.14) 0%, transparent 65%)', pointerEvents: 'none' }} />
       </div>
 
-      {/* Éléments graphiques de la charte — visibles en overlay sur la photo */}
+      {/* Éléments graphiques de la charte — masqués sur mobile pour ne pas gêner la lecture */}
       <svg aria-hidden viewBox="0 0 1000 680" preserveAspectRatio="xMidYMid slice"
+        className="hero-deco"
         style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', zIndex: 1, pointerEvents: 'none' }}>
 
         {/* Grand starburst magenta — droite, mi-hauteur */}
@@ -634,7 +636,10 @@ function CoursesSection() {
               <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: '0.14em', color: 'var(--primary)', textTransform: 'uppercase', margin: '0 0 6px' }}>Forró · Danse</p>
               <h3 style={{ fontFamily: "'DM Serif Display', serif", fontSize: 24, color: 'var(--foreground)', margin: '0 0 10px' }}>Cours avec Marion Lima</h3>
               <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, color: 'rgba(245,237,214,0.5)', margin: '0 0 12px' }}>
-                Mardis & jeudis · 19h30 – 22h30 · Studio des Rigoles, 75020
+                Mardis & jeudis · Studio des Rigoles, 75020
+              </p>
+              <p style={{ color: 'var(--muted-foreground)', fontSize: 13, lineHeight: 1.65, margin: '0 0 8px', fontWeight: 300 }}>
+                Deux cours se suivent chaque soir : <strong style={{ color: 'rgba(245,237,214,0.7)', fontWeight: 500 }}>19h30 – 21h</strong> et <strong style={{ color: 'rgba(245,237,214,0.7)', fontWeight: 500 }}>21h – 22h30</strong> — choisissez l'un ou les deux.
               </p>
               <p style={{ color: 'var(--muted-foreground)', fontSize: 14, lineHeight: 1.7, margin: 0, fontWeight: 300 }}>
                 Du débutant à l'avancé, les cours couvrent les pas de base, les figures de bal, le travail d'abraço, la musicalité et les rythmes du Nordeste. Ateliers thématiques le jeudi pour les emplois du temps irréguliers.
@@ -916,8 +921,15 @@ function Footer() {
               Le P'tit Bal<br /><em style={{ color: 'var(--primary)' }}>Perdu</em>
             </h3>
             <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 14, color: 'rgba(245,237,214,0.5)', lineHeight: 1.65, maxWidth: 280, fontWeight: 300 }}>
-              Association culturelle dédiée au forró et à la culture brésilienne à Paris depuis 2006.
+              Association loi 1901 dédiée au forró et à la culture brésilienne à Paris depuis 2006.
             </p>
+            <a href="mailto:leptitbalperdu@gmail.com"
+              style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginTop: 14, fontFamily: "'DM Mono', monospace", fontSize: 11, color: 'rgba(245,237,214,0.5)', textDecoration: 'none', transition: 'color 0.2s' }}
+              onMouseEnter={e => (e.currentTarget.style.color='var(--secondary)')}
+              onMouseLeave={e => (e.currentTarget.style.color='rgba(245,237,214,0.5)')}>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              leptitbalperdu@gmail.com
+            </a>
           </div>
 
           <div>

@@ -408,8 +408,8 @@ function Hero() {
           })}
         </g>
 
-        {/* Petit starburst cyan — gauche bas */}
-        <g transform="translate(120,520)" opacity="0.45">
+        {/* Petit starburst cyan — droite bas */}
+        <g transform="translate(780,560)" opacity="0.45">
           {Array.from({length:10},(_,i)=>{
             const a=(i*(360/10))*Math.PI/180
             const r=i%2===0?52:28
@@ -423,7 +423,7 @@ function Hero() {
         {/* Étoiles éparpillées */}
         {([
           [760,55,'#f5c218',12],[920,170,'#e8186d',10],[680,130,'#3fc8e4',8],
-          [860,70,'#c8e43f',9],[310,75,'#e8186d',7],[560,100,'#f5c218',6],
+          [860,70,'#c8e43f',9],[850,140,'#e8186d',7],[620,90,'#f5c218',6],
           [820,500,'#3fc8e4',7],[950,310,'#f5c218',8],[970,450,'#e8186d',7],
           [460,45,'#c8e43f',6],[730,490,'#f5c218',5],[880,250,'#3fc8e4',6],
         ] as [number,number,string,number][]).map(([cx,cy,fill,sz],i) => (

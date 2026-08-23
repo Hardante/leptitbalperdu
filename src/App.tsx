@@ -437,7 +437,7 @@ function Hero() {
       <div style={{ position: 'relative', zIndex: 2, flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', maxWidth: 1200, margin: '0 auto', width: '100%', padding: '100px 24px 48px' }}>
         <div style={{ maxWidth: 580 }}>
           <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: '0.18em', color: 'var(--primary)', textTransform: 'uppercase', marginBottom: 20, animation: 'fadeUp 0.5s ease both', fontWeight: 700, textShadow: '0 1px 8px rgba(0,0,0,0.7)' }}>
-            Forró em Paris — 20 ans déjà
+            Forró em Paris
           </p>
 
           <h1 style={{ fontFamily: "'DM Serif Display', serif", lineHeight: 0.9, marginBottom: 26, animation: 'fadeUp 0.7s 0.1s ease both' }}>

@@ -634,7 +634,7 @@ function CoursesSection() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
             <div style={{ borderLeft: '2.5px solid var(--primary)', paddingLeft: 16 }}>
               <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: '0.14em', color: 'var(--primary)', textTransform: 'uppercase', margin: '0 0 6px' }}>Forró · Danse</p>
-              <h3 style={{ fontFamily: "'DM Serif Display', serif", fontSize: 24, color: 'var(--foreground)', margin: '0 0 10px' }}>Cours avec Marion Lima</h3>
+              <h3 style={{ fontFamily: "'DM Serif Display', serif", fontSize: 24, color: 'var(--foreground)', margin: '0 0 10px' }}>Cours de forró avec Marion</h3>
               <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, color: 'rgba(245,237,214,0.5)', margin: '0 0 12px' }}>
                 Mardis & jeudis · Studio des Rigoles, 75020
               </p>

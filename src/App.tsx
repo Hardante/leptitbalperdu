@@ -332,7 +332,7 @@ function Nav() {
 
       <style>{`
         @media (max-width: 768px) { .desk-nav { display:none !important; } .mob-btn { display:block !important; } }
-        @media (max-width: 768px) { .hero-deco { display:none !important; } }
+        @media (max-width: 768px) { .hero-deco { opacity: 0.35 !important; } }
       `}</style>
     </header>
   )

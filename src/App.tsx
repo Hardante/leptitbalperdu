@@ -642,7 +642,7 @@ function CoursesSection() {
                 Deux cours se suivent chaque soir (<strong style={{ color: 'rgba(245,237,214,0.7)', fontWeight: 500 }}>19h30 – 21h</strong> et <strong style={{ color: 'rgba(245,237,214,0.7)', fontWeight: 500 }}>21h – 22h30</strong>), du débutant à l'avancé : pas de base, figures de bal, abraço, musicalité et rythmes du Nordeste. Ateliers thématiques le jeudi.
               </p>
             </div>
-            <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 10 }}>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 8 }}>
               <a href="https://www.ecolededansekimkan.com/danses-adultes/forro-by-le-ptit-bal-perdu"
                 target="_blank" rel="noopener noreferrer"
                 style={{ display: 'inline-flex', alignItems: 'center', gap: 7, background: 'var(--primary)', color: '#1a0e00', padding: '10px 18px', borderRadius: 4, fontFamily: "'DM Mono', monospace", fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textDecoration: 'none', transition: 'opacity 0.2s' }}
@@ -650,8 +650,8 @@ function CoursesSection() {
                 Inscription — École Kimkan
                 <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H4M11 1V8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
               </a>
-              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: 'var(--secondary)', border: '1px solid rgba(201,24,74,0.35)', padding: '6px 12px', borderRadius: 20, whiteSpace: 'nowrap' }}>
-                1er cours gratuit en sept.
+              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: 'var(--secondary)', letterSpacing: '0.06em' }}>
+                ★ 1er cours gratuit en septembre pour les nouveaux
               </span>
             </div>
             <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, borderRadius: 8, overflow: 'hidden', boxShadow: '0 6px 32px rgba(0,0,0,0.5)', marginTop: 'auto' }}>

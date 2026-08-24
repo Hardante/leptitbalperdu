@@ -983,7 +983,7 @@ function Footer() {
 
 function TestimonialsSection() {
   const quotes = [
-    { text: "Avec le forró, j'ai rencontré une communauté, une famille. Je suis arrivée seule un vendredi soir et je ne suis jamais vraiment repartie.", author: "Camille", role: "Danseuse depuis 2019" },
+    { text: "Avec Marion et ses cours de forró, ce sont des vibrations de joie, de bonheur, d'énergie, de rire, de fou rire, d'amitié, de musique et de fête qui sont venues rythmer ma vie et l'ensoleiller. Merci !", author: "Fabienne", role: "Élève" },
     { text: "Dansez, y a que ça de bon. Et au P'tit Bal, on danse vraiment — on transpire, on rit, on se retrouve.", author: "Jacques", role: "Fidèle du Forrobodó" },
     { text: "Le forró m'a appris à écouter l'autre, à m'adapter, à être dans l'instant. C'est bien plus qu'une danse.", author: "Rui", role: "Musicien & danseur" },
     { text: "C'est une danse qui m'a redonné l'envie de vivre, c'est une source de joie qui m'accompagne au quotidien.", author: "Marie", role: "Élève depuis 2023" },

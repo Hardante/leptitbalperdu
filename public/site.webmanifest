@@ -1,0 +1,11 @@
+{
+  "name": "Le P'tit Bal Perdu",
+  "short_name": "P'tit Bal Perdu",
+  "icons": [
+    { "src": "/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/android-chrome-512x512.png", "sizes": "512x512", "type": "image/png" }
+  ],
+  "theme_color": "#e09010",
+  "background_color": "#18120a",
+  "display": "standalone"
+}

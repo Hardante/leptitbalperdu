@@ -4,6 +4,9 @@
   "robots": {
     "index": true
   },
+  "customScripts": {
+    "headStart": "<meta name=\"google-site-verification\" content=\"QDrXfgJivJvjacglNy65qWhoseuksaMcZCD2ilpKtco\" />"
+  },
   "accessibility": {
     "addBypassLinks": false,
     "ignoreReducedMotion": false

@@ -31,7 +31,7 @@
 
 - Le site est accessible via **deux noms de domaine**, achetés sur la plateforme **OVH** :
   - `leptitbalperdu.org` — domaine principal
-  - `forumparis.fr` *(orthographe à confirmer)* — redirige vers le domaine principal
+  - `forroemparis.fr` — redirige vers le domaine principal
 - Renouvellement **annuel**, **automatique**, autour du **20 août**
 
 ## 4. Équipe & engagement de maintenance
@@ -48,7 +48,7 @@
 | **Pourquoi Claude (IA)** | Assure la partie technique/code, sans développeur en interne |
 | **Pourquoi GitHub** | Héberger, sauvegarder et publier le site gratuitement, accès partagé |
 | **Process de mise à jour** | Figma Make / Claude (modification) → GitHub (enregistrement + publication automatique) |
-| **Noms de domaine** | 2 domaines sur OVH — leptitbalperdu.org (principal) + forumparis.fr (redirection) — renouvellement annuel automatique (~20 août) |
+| **Noms de domaine** | 2 domaines sur OVH — leptitbalperdu.org (principal) + forroemparis.fr (redirection) — renouvellement annuel automatique (~20 août) |
 | **Équipe** | Marion et Maeva (temporaire) |
 | **Fréquence de maintenance** | Environ 2 mises à jour par mois (événements) |
 | **Évolutivité** | Le site peut grandir avec l'association (nouvelles pages, sections) |

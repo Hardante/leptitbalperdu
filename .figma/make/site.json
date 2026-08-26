@@ -1,8 +1,11 @@
 {
   "title": "Le P'tit Bal Perdu",
-  "description": "Connect with Paris's Forró dance community through an elegant mobile site featuring event calendars, cultural stories, and inclusive Brazilian dance experiences.",
+  "description": "Depuis plus de 20 ans, Le P'tit Bal Perdu fait vivre à Paris les cultures populaires brésiliennes — forró, chant, bals, cours et rencontres.",
   "robots": {
     "index": true
+  },
+  "openGraph": {
+    "image": "https://forroemparis.fr/og-image.jpg"
   },
   "customScripts": {
     "headStart": "<meta name=\"google-site-verification\" content=\"QDrXfgJivJvjacglNy65qWhoseuksaMcZCD2ilpKtco\" />"

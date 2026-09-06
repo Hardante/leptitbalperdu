@@ -559,7 +559,10 @@ function EventCardGrid({ evt }: { evt: Evt }) {
       <div style={{ padding: '16px 18px 20px', flex: 1, display: 'flex', flexDirection: 'column', gap: 5 }}>
         <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: 'var(--primary)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{evt.date}</p>
         <h3 style={{ fontFamily: "'DM Serif Display', serif", fontSize: 17, color: 'var(--surface-foreground)', lineHeight: 1.2 }}>{evt.title}</h3>
-        <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 12, color: 'var(--muted-foreground)', lineHeight: 1.4, flexGrow: 1, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{evt.subtitle}</p>
+        {isSaison
+          ? <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 12, color: 'var(--muted-foreground)', lineHeight: 1.45, flexGrow: 1 }}>Le bal mensuel du P'tit Bal — concert live, DJ et initiation à la danse. Ouvert à tous, débutants bienvenus.</p>
+          : <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 12, color: 'var(--muted-foreground)', lineHeight: 1.4, flexGrow: 1, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{evt.subtitle}</p>
+        }
         <div style={{ display: 'flex', gap: 12, marginTop: 10, paddingTop: 12, borderTop: '1px solid var(--border)' }}>
           <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: 'var(--muted-foreground)', display: 'flex', alignItems: 'center', gap: 4 }}>
             <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><circle cx="5" cy="5" r="4" stroke="currentColor" strokeWidth="1"/><path d="M5 2.5v2.5l1.5 1" stroke="currentColor" strokeWidth="1" strokeLinecap="round"/></svg>
@@ -578,10 +581,9 @@ function EventCardGrid({ evt }: { evt: Evt }) {
           ) : null}
         </div>
         {isSaison && (
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, marginTop: 10, padding: '8px 0', background: color, borderRadius: 4, fontFamily: "'DM Mono', monospace", fontSize: 10, fontWeight: 700, letterSpacing: '0.07em', color: '#fff', transition: 'opacity 0.2s', opacity: hov ? 0.82 : 1 }}>
-            Voir toutes les dates
-            <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M5 1v8M1 5l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-          </div>
+          <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: color, letterSpacing: '0.06em', marginTop: 6, display: 'flex', alignItems: 'center', gap: 4, opacity: hov ? 1 : 0.7, transition: 'opacity 0.2s' }}>
+            Voir toutes les dates ↓
+          </span>
         )}
         {!isSaison && evt.ticketUrl && (
           <a href={evt.ticketUrl} target="_blank" rel="noopener noreferrer"

@@ -247,7 +247,7 @@ const EVENTS: Evt[] = [
     category: 'Bals' as const,
     image: forrobodoSaisonImg,
     tag: 'Saison 2026-27',
-    description: "Soirée bal mensuelle avec initiation à la danse à 21h par Marion Lima, concert live et DJ. Dates sous réserve de changement.",
+    description: "Le cœur de l'association : deux vendredis par mois, le bal réunit danseurs et curieux autour d'un concert live et d'un DJ. Initiation à 21h — aucune expérience requise.",
   })),
   {
     id: 8,
@@ -537,12 +537,14 @@ function StatsSection() {
 function EventCardGrid({ evt }: { evt: Evt }) {
   const [hov, setHov] = useState(false)
   const color = CAT_COLOR[evt.category] || 'var(--primary)'
+  const isSaison = evt.id >= 301 && evt.id <= 316
 
   return (
     <article
       onMouseEnter={() => setHov(true)}
       onMouseLeave={() => setHov(false)}
-      style={{ background: '#fff', border: `1px solid ${hov ? color : 'var(--border)'}`, borderRadius: 8, overflow: 'hidden', display: 'flex', flexDirection: 'column', transition: 'border-color 0.25s, box-shadow 0.25s', boxShadow: hov ? '0 8px 32px rgba(0,0,0,0.10)' : '0 1px 4px rgba(0,0,0,0.05)' }}>
+      onClick={isSaison ? () => document.getElementById('agenda')?.scrollIntoView({ behavior: 'smooth' }) : undefined}
+      style={{ background: '#fff', border: `1px solid ${hov ? color : 'var(--border)'}`, borderRadius: 8, overflow: 'hidden', display: 'flex', flexDirection: 'column', transition: 'border-color 0.25s, box-shadow 0.25s', boxShadow: hov ? '0 8px 32px rgba(0,0,0,0.10)' : '0 1px 4px rgba(0,0,0,0.05)', cursor: isSaison ? 'pointer' : 'default' }}>
       <div style={{ position: 'relative', aspectRatio: '4/3', overflow: 'hidden', background: '#f0e8d8' }}>
         <img src={evt.image} alt={`${evt.title} — ${evt.subtitle}`}
           style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s', transform: hov ? 'scale(1.05)' : 'scale(1)' }} />
@@ -575,7 +577,13 @@ function EventCardGrid({ evt }: { evt: Evt }) {
             </a>
           ) : null}
         </div>
-        {evt.ticketUrl && (
+        {isSaison && (
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, marginTop: 10, padding: '8px 0', background: color, borderRadius: 4, fontFamily: "'DM Mono', monospace", fontSize: 10, fontWeight: 700, letterSpacing: '0.07em', color: '#fff', transition: 'opacity 0.2s', opacity: hov ? 0.82 : 1 }}>
+            Voir toutes les dates
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M5 1v8M1 5l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          </div>
+        )}
+        {!isSaison && evt.ticketUrl && (
           <a href={evt.ticketUrl} target="_blank" rel="noopener noreferrer"
             style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, marginTop: 10, padding: '8px 0', background: color, borderRadius: 4, fontFamily: "'DM Mono', monospace", fontSize: 10, fontWeight: 700, letterSpacing: '0.07em', color: '#fff', textDecoration: 'none', transition: 'opacity 0.2s' }}
             onMouseEnter={e => (e.currentTarget.style.opacity = '0.82')}

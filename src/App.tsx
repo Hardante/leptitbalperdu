@@ -543,7 +543,7 @@ function EventCardGrid({ evt }: { evt: Evt }) {
     <article
       onMouseEnter={() => setHov(true)}
       onMouseLeave={() => setHov(false)}
-      onClick={isSaison ? () => document.getElementById('agenda')?.scrollIntoView({ behavior: 'smooth' }) : undefined}
+      onClick={isSaison ? () => (document.getElementById('forrobodo-dates') || document.getElementById('agenda'))?.scrollIntoView({ behavior: 'smooth' }) : undefined}
       style={{ background: '#fff', border: `1px solid ${hov ? color : 'var(--border)'}`, borderRadius: 8, overflow: 'hidden', display: 'flex', flexDirection: 'column', transition: 'border-color 0.25s, box-shadow 0.25s', boxShadow: hov ? '0 8px 32px rgba(0,0,0,0.10)' : '0 1px 4px rgba(0,0,0,0.05)', cursor: isSaison ? 'pointer' : 'default' }}>
       <div style={{ position: 'relative', aspectRatio: '4/3', overflow: 'hidden', background: '#f0e8d8' }}>
         <img src={evt.image} alt={`${evt.title} — ${evt.subtitle}`}
@@ -560,7 +560,7 @@ function EventCardGrid({ evt }: { evt: Evt }) {
         <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: 'var(--primary)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{evt.date}</p>
         <h3 style={{ fontFamily: "'DM Serif Display', serif", fontSize: 17, color: 'var(--surface-foreground)', lineHeight: 1.2 }}>{evt.title}</h3>
         {isSaison
-          ? <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 12, color: 'var(--muted-foreground)', lineHeight: 1.45, flexGrow: 1 }}>Le bal mensuel du P'tit Bal — concert live, DJ et initiation à la danse. Ouvert à tous, débutants bienvenus.</p>
+          ? <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 12, color: 'var(--muted-foreground)', lineHeight: 1.45, flexGrow: 1 }}>Début de la saison le 19 septembre jusqu'au 25 juin.</p>
           : <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 12, color: 'var(--muted-foreground)', lineHeight: 1.4, flexGrow: 1, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{evt.subtitle}</p>
         }
         <div style={{ display: 'flex', gap: 12, marginTop: 10, paddingTop: 12, borderTop: '1px solid var(--border)' }}>
@@ -581,9 +581,10 @@ function EventCardGrid({ evt }: { evt: Evt }) {
           ) : null}
         </div>
         {isSaison && (
-          <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: color, letterSpacing: '0.06em', marginTop: 6, display: 'flex', alignItems: 'center', gap: 4, opacity: hov ? 1 : 0.7, transition: 'opacity 0.2s' }}>
-            Voir toutes les dates ↓
-          </span>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, marginTop: 10, padding: '8px 0', background: color, borderRadius: 4, fontFamily: "'DM Mono', monospace", fontSize: 10, fontWeight: 700, letterSpacing: '0.07em', color: '#fff', transition: 'opacity 0.2s', opacity: hov ? 0.82 : 1 }}>
+            En savoir plus
+            <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H4M11 1V8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          </div>
         )}
         {!isSaison && evt.ticketUrl && (
           <a href={evt.ticketUrl} target="_blank" rel="noopener noreferrer"
@@ -836,28 +837,42 @@ function EventsSection() {
           </div>
         )}
 
-        {/* Prochaines dates Forrobodó (grille uniquement, quand il y a des dates supplémentaires) */}
+        {/* Encart Forrobodó — saison complète */}
         {view === 'grille' && extraForrobodo.length > 0 && (filter === 'Tous' || filter === 'Bals') && (
-          <div style={{ marginTop: 24, background: '#fff', border: '1px solid var(--border)', borderRadius: 10, padding: '20px 24px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12, marginBottom: 14 }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#c9184a', fontWeight: 600 }}>Forrobodó — Saison 2026-27</span>
-                <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: 'var(--muted-foreground)', opacity: 0.6 }}>· sous réserve de changement</span>
+          <div id="forrobodo-dates" style={{ marginTop: 24, background: 'linear-gradient(135deg, #1a0e00 0%, #2d1205 100%)', border: '1px solid rgba(201,24,74,0.3)', borderRadius: 12, padding: '28px 28px 24px', position: 'relative', overflow: 'hidden' }}>
+            {/* Accent décoratif */}
+            <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 3, background: 'linear-gradient(90deg, #c9184a, #e09010, #c9184a)' }} />
+
+            {/* En-tête */}
+            <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16, marginBottom: 16 }}>
+              <div>
+                <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: '0.16em', textTransform: 'uppercase', color: '#c9184a', margin: '0 0 8px', fontWeight: 600 }}>★ Saison 2026–27 · 2 vendredis par mois</p>
+                <h3 style={{ fontFamily: "'DM Serif Display', serif", fontSize: 'clamp(20px, 3vw, 26px)', color: '#f5edd6', margin: '0 0 10px', lineHeight: 1.1 }}>
+                  Le Forrobodó, c'est <em style={{ color: '#c9184a' }}>le bal</em> du P'tit Bal Perdu
+                </h3>
+                <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 14, color: 'rgba(245,237,214,0.65)', lineHeight: 1.65, margin: 0, maxWidth: 560, fontWeight: 300 }}>
+                  Chaque vendredi, concert live, DJ forró et initiation à la danse dès 21h avec Marion Lima. Débutants comme danseurs confirmés, tout le monde y trouve sa place — et on en repart les pieds qui bougent encore.
+                </p>
               </div>
               <button onClick={downloadICS}
-                style={{ display: 'inline-flex', alignItems: 'center', gap: 6, border: '1.5px solid #c9184a', color: '#c9184a', background: 'transparent', padding: '6px 14px', borderRadius: 20, fontFamily: "'DM Mono', monospace", fontSize: 10, fontWeight: 700, letterSpacing: '0.06em', cursor: 'pointer', transition: 'all 0.2s' }}
-                onMouseEnter={e => { const el = e.currentTarget; el.style.background='#c9184a'; el.style.color='#fff' }}
-                onMouseLeave={e => { const el = e.currentTarget; el.style.background='transparent'; el.style.color='#c9184a' }}>
+                style={{ display: 'inline-flex', alignItems: 'center', gap: 6, border: '1.5px solid rgba(201,24,74,0.6)', color: '#c9184a', background: 'transparent', padding: '8px 16px', borderRadius: 20, fontFamily: "'DM Mono', monospace", fontSize: 10, fontWeight: 700, letterSpacing: '0.06em', cursor: 'pointer', transition: 'all 0.2s', flexShrink: 0 }}
+                onMouseEnter={e => { const el = e.currentTarget; el.style.background='#c9184a'; el.style.color='#fff'; el.style.borderColor='#c9184a' }}
+                onMouseLeave={e => { const el = e.currentTarget; el.style.background='transparent'; el.style.color='#c9184a'; el.style.borderColor='rgba(201,24,74,0.6)' }}>
                 <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                 Ajouter au calendrier (.ics)
               </button>
             </div>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-              {extraForrobodo.map(e => (
-                <span key={e.id} style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: 'var(--muted-foreground)', background: '#fce8ee', border: '1px solid #f5c0cf', borderRadius: 16, padding: '4px 10px', whiteSpace: 'nowrap' }}>
-                  {e.date}
-                </span>
-              ))}
+
+            {/* Dates */}
+            <div style={{ borderTop: '1px solid rgba(245,237,214,0.08)', paddingTop: 16 }}>
+              <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(245,237,214,0.3)', margin: '0 0 10px' }}>Dates prévues · sous réserve de changement</p>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 7 }}>
+                {extraForrobodo.map(e => (
+                  <span key={e.id} style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: 'rgba(245,237,214,0.7)', background: 'rgba(201,24,74,0.12)', border: '1px solid rgba(201,24,74,0.25)', borderRadius: 16, padding: '4px 11px', whiteSpace: 'nowrap' }}>
+                    {e.date}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         )}

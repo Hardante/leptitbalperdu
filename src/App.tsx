@@ -14,6 +14,7 @@ import kiosquesPosterImg from '@/imports/WhatsApp_Image_2026-08-19_at_15.18.41.j
 import portesOuvertesImg  from '@/imports/WhatsApp_Image_2026-08-18_at_16.53.50.jpeg'
 import rentreeImg         from '@/imports/WhatsApp_Image_2026-08-21_at_10.31.44.jpeg'
 import forrobodo20ansImg  from '@/imports/WhatsApp_Image_2026-08-19_at_11.51.20.jpeg'
+import forrobodoSaisonImg from '@/imports/IMG_1387.png'
 import courseDanseImg    from '@/imports/WhatsApp_Image_2026-08-18_at_17.04.07.jpeg'
 
 // ─── types & data ──────────────────────────────────────────────────────────────
@@ -217,6 +218,37 @@ const EVENTS: Evt[] = [
     ticketUrl: 'https://www.helloasso.com/associations/le-p-tit-bal-perdu/evenements/forrobodo-special-20-ans-du-p-tit-bal-trio-exactamente',
     description: "Soirée d'anniversaire exceptionnelle avec le Trio Exactamente. Initiation à la danse à 21h avec Marion Lima, participation de la chorale, surprises… PDS até 2h !",
   },
+  // Forrobodó saison 2026-27 (sous réserve de changement)
+  ...[
+    { id: 301, date: 'Vendredi 2 octobre 2026',    dateSort: '2026-10-02' },
+    { id: 302, date: 'Vendredi 23 octobre 2026',   dateSort: '2026-10-23' },
+    { id: 303, date: 'Vendredi 27 novembre 2026',  dateSort: '2026-11-27' },
+    { id: 304, date: 'Vendredi 11 décembre 2026',  dateSort: '2026-12-11' },
+    { id: 305, date: 'Vendredi 8 janvier 2027',    dateSort: '2027-01-08' },
+    { id: 306, date: 'Vendredi 22 janvier 2027',   dateSort: '2027-01-22' },
+    { id: 307, date: 'Vendredi 5 février 2027',    dateSort: '2027-02-05' },
+    { id: 308, date: 'Vendredi 19 février 2027',   dateSort: '2027-02-19' },
+    { id: 309, date: 'Vendredi 5 mars 2027',       dateSort: '2027-03-05' },
+    { id: 310, date: 'Vendredi 19 mars 2027',      dateSort: '2027-03-19' },
+    { id: 311, date: 'Vendredi 2 avril 2027',      dateSort: '2027-04-02' },
+    { id: 312, date: 'Vendredi 23 avril 2027',     dateSort: '2027-04-23' },
+    { id: 313, date: 'Vendredi 7 mai 2027',        dateSort: '2027-05-07' },
+    { id: 314, date: 'Vendredi 28 mai 2027',       dateSort: '2027-05-28' },
+    { id: 315, date: 'Vendredi 11 juin 2027',      dateSort: '2027-06-11' },
+    { id: 316, date: 'Vendredi 25 juin 2027',      dateSort: '2027-06-25' },
+  ].map(({ id, date, dateSort }) => ({
+    id,
+    title: 'Forrobodó',
+    subtitle: 'Concert & DJ · Initiation danse',
+    date,
+    dateSort,
+    time: '21h – 2h',
+    venue: '19-21 rue Boyer, 75020 Paris',
+    category: 'Bals' as const,
+    image: forrobodoSaisonImg,
+    tag: 'Saison 2026-27',
+    description: "Soirée bal mensuelle avec initiation à la danse à 21h par Marion Lima, concert live et DJ. Dates sous réserve de changement.",
+  })),
   {
     id: 8,
     title: 'Forró & More Marathon',
@@ -707,6 +739,41 @@ function EventsSection() {
   const upcoming = pool.filter(e => e.dateSort >= TODAY).sort((a, b) => a.dateSort.localeCompare(b.dateSort))
   const past     = pool.filter(e => e.dateSort <  TODAY).sort((a, b) => b.dateSort.localeCompare(a.dateSort))
 
+  // En grille : déduplique les Forrobodó, montre seulement le prochain
+  const seenForrobodo = { seen: false }
+  const gridUpcoming = view === 'grille'
+    ? upcoming.filter(e => {
+        if (e.title === 'Forrobodó' && e.id >= 301) {
+          if (seenForrobodo.seen) return false
+          seenForrobodo.seen = true
+        }
+        return true
+      })
+    : upcoming
+  const extraForrobodo = upcoming.filter(e => e.title === 'Forrobodó' && e.id >= 301).slice(1)
+
+  function downloadICS() {
+    const fbEvents = upcoming.filter(e => e.title === 'Forrobodó' || e.title === 'Forrobodó Spécial 20 ans')
+    const fmt = (s: string) => s.replace(/,/g, '\\,').replace(/\n/g, '\\n')
+    const lines = ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Le P\'tit Bal Perdu//FR','CALSCALE:GREGORIAN','METHOD:PUBLISH','X-WR-CALNAME:Forrobodó — Le P\'tit Bal Perdu']
+    fbEvents.forEach(evt => {
+      const d = evt.dateSort.replace(/-/g, '')
+      lines.push('BEGIN:VEVENT')
+      lines.push(`UID:pbp-${evt.id}@leptitbalperdu.fr`)
+      lines.push(`DTSTART;VALUE=DATE:${d}`)
+      lines.push(`SUMMARY:${fmt(evt.title + (evt.subtitle ? ' — ' + evt.subtitle : ''))}`)
+      lines.push(`DESCRIPTION:${fmt(evt.description)}`)
+      lines.push(`LOCATION:${fmt(evt.venue)}`)
+      lines.push('END:VEVENT')
+    })
+    lines.push('END:VCALENDAR')
+    const blob = new Blob([lines.join('\r\n')], { type: 'text/calendar;charset=utf-8' })
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url; a.download = 'forrobodo-saison-2026-27.ics'; a.click()
+    URL.revokeObjectURL(url)
+  }
+
   const count = (f: Filter) => {
     const p = f === 'Tous' ? EVENTS : EVENTS.filter(e => e.category === f)
     return p.filter(e => e.dateSort >= TODAY).length
@@ -744,7 +811,7 @@ function EventsSection() {
             const bg = CAT_BG[f] || '#fdf2d8'
             return (
               <button key={f} onClick={() => setFilter(f)} style={{ padding: '7px 18px', borderRadius: 20, border: `1.5px solid ${active ? color : 'var(--border)'}`, background: active ? bg : '#fff', color: active ? color : 'var(--muted-foreground)', fontFamily: "'Inter', sans-serif", fontSize: 13, fontWeight: 500, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6, transition: 'all 0.2s' }}>
-                {f !== 'Tous' && <span style={{ fontSize: 9 }}>{f === 'Concerts' ? '★' : '♥'}</span>}
+                {f !== 'Tous' && <span style={{ fontSize: 9 }}>{'★'}</span>}
                 {f}
                 <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, opacity: 0.6 }}>{count(f)}</span>
               </button>
@@ -753,11 +820,38 @@ function EventsSection() {
         </div>
 
         {/* Upcoming */}
-        {view === 'grille' && upcoming.length > 0 && (
+        {view === 'grille' && gridUpcoming.length > 0 && (
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(170px, 1fr))', gap: 16 }}>
-            {upcoming.map(e => <EventCardGrid key={e.id} evt={e} />)}
+            {gridUpcoming.map(e => <EventCardGrid key={e.id} evt={e} />)}
           </div>
         )}
+
+        {/* Prochaines dates Forrobodó (grille uniquement, quand il y a des dates supplémentaires) */}
+        {view === 'grille' && extraForrobodo.length > 0 && (filter === 'Tous' || filter === 'Bals') && (
+          <div style={{ marginTop: 24, background: '#fff', border: '1px solid var(--border)', borderRadius: 10, padding: '20px 24px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12, marginBottom: 14 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#c9184a', fontWeight: 600 }}>Forrobodó — Saison 2026-27</span>
+                <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: 'var(--muted-foreground)', opacity: 0.6 }}>· sous réserve de changement</span>
+              </div>
+              <button onClick={downloadICS}
+                style={{ display: 'inline-flex', alignItems: 'center', gap: 6, border: '1.5px solid #c9184a', color: '#c9184a', background: 'transparent', padding: '6px 14px', borderRadius: 20, fontFamily: "'DM Mono', monospace", fontSize: 10, fontWeight: 700, letterSpacing: '0.06em', cursor: 'pointer', transition: 'all 0.2s' }}
+                onMouseEnter={e => { const el = e.currentTarget; el.style.background='#c9184a'; el.style.color='#fff' }}
+                onMouseLeave={e => { const el = e.currentTarget; el.style.background='transparent'; el.style.color='#c9184a' }}>
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Ajouter au calendrier (.ics)
+              </button>
+            </div>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+              {extraForrobodo.map(e => (
+                <span key={e.id} style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: 'var(--muted-foreground)', background: '#fce8ee', border: '1px solid #f5c0cf', borderRadius: 16, padding: '4px 10px', whiteSpace: 'nowrap' }}>
+                  {e.date}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
+
         {view === 'liste' && upcoming.length > 0 && (
           <div style={{ background: '#fff', border: '1px solid var(--border)', borderRadius: 10, padding: '0 24px', overflow: 'hidden' }}>
             {upcoming.map((e, i) => <EventRowList key={e.id} evt={e} isLast={i === upcoming.length - 1} />)}
@@ -1011,8 +1105,8 @@ function TestimonialsSection() {
             </h2>
           </div>
           <div style={{ display: 'flex', gap: 8 }}>
-            {[['←', prev], ['→', next]].map(([arrow, fn]) => (
-              <button key={arrow as string} onClick={fn as () => void} style={{ all: 'unset', cursor: 'pointer', width: 34, height: 34, borderRadius: '50%', border: '1px solid var(--border-dark)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--foreground)', fontSize: 15, transition: 'background 0.2s' }}
+            {([['←', prev], ['→', next]] as [string, () => void][]).map(([arrow, fn]) => (
+              <button key={arrow} onClick={fn} style={{ all: 'unset', cursor: 'pointer', width: 34, height: 34, borderRadius: '50%', border: '1px solid var(--border-dark)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--foreground)', fontSize: 15, transition: 'background 0.2s' }}
                 onMouseEnter={e => (e.currentTarget.style.background = 'rgba(255,255,255,0.08)')}
                 onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}>
                 {arrow}

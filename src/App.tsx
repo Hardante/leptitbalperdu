@@ -1210,8 +1210,7 @@ function MembershipBadge() {
         <span style={{ position: 'relative', width: 10, height: 10, borderRadius: '50%', background: '#1a0e00' }} />
       </span>
       <span style={{ lineHeight: 1.2 }}>
-        <span style={{ display: 'block', fontSize: 9, opacity: 0.7, letterSpacing: '0.1em', marginBottom: 1 }}>CE WEEK-END</span>
-        On danse ?
+        Vamos dançar ?
       </span>
     </a>
   )

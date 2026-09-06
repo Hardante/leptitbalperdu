@@ -852,7 +852,7 @@ function EventsSection() {
                   Le Forrobodó, c'est <em style={{ color: '#c9184a' }}>le bal</em> du P'tit Bal Perdu
                 </h3>
                 <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 14, color: '#4a3420', lineHeight: 1.65, margin: 0, maxWidth: 560, fontWeight: 300 }}>
-                  Chaque vendredi, concert live, DJ forró et initiation à la danse dès 21h avec Marion Lima. Débutants comme danseurs confirmés, tout le monde y trouve sa place — et on en repart les pieds qui bougent encore.
+                  Deux vendredis par mois, le P'tit Bal Perdu organise son grand rendez-vous forró, avec concert live, DJ set et initiation à la danse. C'est l'endroit idéal pour faire ses premiers pas, se laisser porter par la musique et... danser jusqu'au bout de la nuit !
                 </p>
               </div>
               <button onClick={downloadICS}

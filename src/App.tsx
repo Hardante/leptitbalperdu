@@ -744,7 +744,7 @@ function EventsSection() {
   const [view, setView] = useState<ViewMode>('grille')
   const [showPast, setShowPast] = useState(false)
 
-  const TODAY = '2026-08-19'
+  const TODAY = new Date().toISOString().slice(0, 10)
 
   const pool = filter === 'Tous' ? EVENTS : EVENTS.filter(e => e.category === filter)
   const upcoming = pool.filter(e => e.dateSort >= TODAY).sort((a, b) => a.dateSort.localeCompare(b.dateSort))

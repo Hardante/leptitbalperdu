@@ -560,7 +560,7 @@ function EventCardGrid({ evt }: { evt: Evt }) {
         <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: 'var(--primary)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{evt.date}</p>
         <h3 style={{ fontFamily: "'DM Serif Display', serif", fontSize: 17, color: 'var(--surface-foreground)', lineHeight: 1.2 }}>{evt.title}</h3>
         {isSaison
-          ? <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 12, color: 'var(--muted-foreground)', lineHeight: 1.45, flexGrow: 1 }}>Le bal mensuel du P'tit Bal — concert live, DJ et initiation à la danse. Ouvert à tous, débutants bienvenus.</p>
+          ? <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 12, color: 'var(--muted-foreground)', lineHeight: 1.45, flexGrow: 1 }}>Deux vendredis par mois, le P'tit Bal Perdu organise son grand rendez-vous forró, avec concert live, DJ set et initiation à la danse. C'est l'endroit idéal pour faire ses premiers pas, se laisser porter par la musique et... danser jusqu'au bout de la nuit !</p>
           : <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 12, color: 'var(--muted-foreground)', lineHeight: 1.4, flexGrow: 1, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{evt.subtitle}</p>
         }
         <div style={{ display: 'flex', gap: 12, marginTop: 10, paddingTop: 12, borderTop: '1px solid var(--border)' }}>
@@ -581,9 +581,12 @@ function EventCardGrid({ evt }: { evt: Evt }) {
           ) : null}
         </div>
         {isSaison && (
-          <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: color, letterSpacing: '0.06em', marginTop: 6, display: 'flex', alignItems: 'center', gap: 4, opacity: hov ? 1 : 0.7, transition: 'opacity 0.2s' }}>
-            Voir toutes les dates ↓
-          </span>
+          <a href="#forrobodo-dates"
+            onClick={e => { e.preventDefault(); e.stopPropagation(); document.getElementById('forrobodo-dates')?.scrollIntoView({ behavior: 'smooth' }) }}
+            style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, marginTop: 10, padding: '8px 0', background: color, borderRadius: 4, fontFamily: "'DM Mono', monospace", fontSize: 10, fontWeight: 700, letterSpacing: '0.07em', color: '#fff', textDecoration: 'none', transition: 'opacity 0.2s', opacity: hov ? 0.82 : 1 }}>
+            En savoir plus
+            <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H4M11 1V8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          </a>
         )}
         {!isSaison && evt.ticketUrl && (
           <a href={evt.ticketUrl} target="_blank" rel="noopener noreferrer"

@@ -560,7 +560,7 @@ function EventCardGrid({ evt }: { evt: Evt }) {
         <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: 'var(--primary)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{evt.date}</p>
         <h3 style={{ fontFamily: "'DM Serif Display', serif", fontSize: 17, color: 'var(--surface-foreground)', lineHeight: 1.2 }}>{evt.title}</h3>
         {isSaison
-          ? <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 12, color: 'var(--muted-foreground)', lineHeight: 1.45, flexGrow: 1 }}>Deux vendredis par mois, le P'tit Bal Perdu organise son grand rendez-vous forró, avec concert live, DJ set et initiation à la danse. C'est l'endroit idéal pour faire ses premiers pas, se laisser porter par la musique et... danser jusqu'au bout de la nuit !</p>
+          ? <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 12, color: 'var(--muted-foreground)', lineHeight: 1.45, flexGrow: 1 }}>Début de la saison le 19 septembre jusqu'au 25 juin.</p>
           : <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 12, color: 'var(--muted-foreground)', lineHeight: 1.4, flexGrow: 1, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{evt.subtitle}</p>
         }
         <div style={{ display: 'flex', gap: 12, marginTop: 10, paddingTop: 12, borderTop: '1px solid var(--border)' }}>
@@ -844,9 +844,10 @@ function EventsSection() {
         {view === 'grille' && extraForrobodo.length > 0 && (filter === 'Tous' || filter === 'Bals') && (
           <div style={{ marginTop: 24, background: '#fff', border: '1px solid var(--border)', borderRadius: 10, padding: '20px 24px' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12, marginBottom: 14 }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#c9184a', fontWeight: 600 }}>Forrobodó — Saison 2026-27</span>
-                <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: 'var(--muted-foreground)', opacity: 0.6 }}>· sous réserve de changement</span>
+              <div>
+                <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: '0.14em', textTransform: 'uppercase', color: '#c9184a', fontWeight: 600, margin: '0 0 6px' }}>★ Forrobodó — Saison 2026-27</p>
+                <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, color: 'var(--muted-foreground)', margin: '0 0 8px', fontWeight: 500 }}>Deux vendredis par mois, du 19 septembre au 25 juin</p>
+                <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 13, color: '#4a3420', lineHeight: 1.6, margin: 0, maxWidth: 500, fontWeight: 300 }}>Le P'tit Bal Perdu organise son grand rendez-vous forró, avec concert live, DJ set et initiation à la danse. C'est l'endroit idéal pour faire ses premiers pas, se laisser porter par la musique et... danser jusqu'au bout de la nuit !</p>
               </div>
               <div style={{ position: 'relative' }}>
                 <button onClick={() => setCalOpen(v => !v)}

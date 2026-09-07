@@ -15,6 +15,7 @@ import portesOuvertesImg  from '@/imports/WhatsApp_Image_2026-08-18_at_16.53.50.
 import rentreeImg         from '@/imports/WhatsApp_Image_2026-08-21_at_10.31.44.jpeg'
 import forrobodo20ansImg  from '@/imports/WhatsApp_Image_2026-08-19_at_11.51.20.jpeg'
 import forrobodoSaisonImg from '@/imports/IMG_1387.png'
+import ramonVieiraImg     from '@/imports/Forrobodo_Ramon_Vieira.jpeg'
 import courseDanseImg    from '@/imports/WhatsApp_Image_2026-08-18_at_17.04.07.jpeg'
 
 // ─── types & data ──────────────────────────────────────────────────────────────
@@ -218,9 +219,21 @@ const EVENTS: Evt[] = [
     ticketUrl: 'https://www.helloasso.com/associations/le-p-tit-bal-perdu/evenements/forrobodo-special-20-ans-du-p-tit-bal-trio-exactamente',
     description: "Soirée d'anniversaire exceptionnelle avec le Trio Exactamente. Initiation à la danse à 21h avec Marion Lima, participation de la chorale, surprises… PDS até 2h !",
   },
+  {
+    id: 301,
+    title: 'Forrobodó',
+    subtitle: 'Ramon Vieira en Trio avec Gabriel Walsh & Mytho Roots',
+    date: 'Vendredi 2 octobre 2026',
+    dateSort: '2026-10-02',
+    time: '21h – 2h',
+    venue: 'Studio des Rigoles, 46 rue des Rigoles, 75020',
+    category: 'Bals' as const,
+    image: ramonVieiraImg,
+    description: "Ramon Vieira, figure emblématique du forró, réunit Gabriel Walsh et Mytho Roots pour une soirée exceptionnelle. Initiation à la danse à 21h avec Marion Lima. PDS até 2h !",
+  },
   // Forrobodó saison 2026-27 (sous réserve de changement)
   ...[
-    { id: 301, date: 'Vendredi 2 octobre 2026',    dateSort: '2026-10-02' },
+    { id: 302, date: 'Vendredi 23 octobre 2026',   dateSort: '2026-10-23' },
     { id: 302, date: 'Vendredi 23 octobre 2026',   dateSort: '2026-10-23' },
     { id: 303, date: 'Vendredi 27 novembre 2026',  dateSort: '2026-11-27' },
     { id: 304, date: 'Vendredi 11 décembre 2026',  dateSort: '2026-12-11' },
@@ -537,7 +550,7 @@ function StatsSection() {
 function EventCardGrid({ evt }: { evt: Evt }) {
   const [hov, setHov] = useState(false)
   const color = CAT_COLOR[evt.category] || 'var(--primary)'
-  const isSaison = evt.id >= 301 && evt.id <= 316
+  const isSaison = evt.id >= 302 && evt.id <= 316
 
   return (
     <article
@@ -757,14 +770,14 @@ function EventsSection() {
   const seenForrobodo = { seen: false }
   const gridUpcoming = view === 'grille'
     ? upcoming.filter(e => {
-        if (e.title === 'Forrobodó' && e.id >= 301) {
+        if (e.title === 'Forrobodó' && e.id >= 302) {
           if (seenForrobodo.seen) return false
           seenForrobodo.seen = true
         }
         return true
       })
     : upcoming
-  const extraForrobodo = upcoming.filter(e => e.title === 'Forrobodó' && e.id >= 301).slice(1)
+  const extraForrobodo = upcoming.filter(e => e.title === 'Forrobodó' && e.id >= 302).slice(1)
 
   function downloadICS() {
     const fbEvents = upcoming.filter(e => e.title === 'Forrobodó' || e.title === 'Forrobodó Spécial 20 ans')

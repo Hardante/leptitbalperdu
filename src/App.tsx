@@ -296,6 +296,25 @@ const CAT_BG: Record<string, string> = {
 
 // ─── helpers ───────────────────────────────────────────────────────────────────
 
+// Google Calendar n'a pas d'équivalent "fichier .ics" : on ouvre directement
+// son URL de création d'événement dans un nouvel onglet, sans téléchargement
+// (contrairement à Apple Calendar / Outlook, qui eux consomment un .ics et
+// s'ouvrent via l'appli associée aux .ics par défaut sur l'appareil).
+function googleCalendarUrl(evt: Evt) {
+  const [y, m, d] = evt.dateSort.split('-').map(Number)
+  const start = new Date(y, m - 1, d)
+  const end = new Date(y, m - 1, d + 1)
+  const fmt = (dt: Date) => `${dt.getFullYear()}${String(dt.getMonth() + 1).padStart(2, '0')}${String(dt.getDate()).padStart(2, '0')}`
+  const params = new URLSearchParams({
+    action: 'TEMPLATE',
+    text: evt.title + (evt.subtitle ? ' — ' + evt.subtitle : ''),
+    dates: `${fmt(start)}/${fmt(end)}`,
+    details: evt.description,
+    location: evt.venue,
+  })
+  return `https://calendar.google.com/calendar/render?${params.toString()}`
+}
+
 function CatPill({ cat }: { cat: string }) {
   const color = CAT_COLOR[cat] || '#e09010'
   const bg = CAT_BG[cat] || '#fdf2d8'
@@ -778,6 +797,7 @@ function EventsSection() {
       })
     : upcoming
   const extraForrobodo = upcoming.filter(e => e.title === 'Forrobodó' && e.id >= 302).slice(1)
+  const nextForrobodo = upcoming.find(e => e.title === 'Forrobodó' || e.title === 'Forrobodó Spécial 20 ans')
 
   function downloadICS() {
     const fbEvents = upcoming.filter(e => e.title === 'Forrobodó' || e.title === 'Forrobodó Spécial 20 ans')
@@ -873,7 +893,7 @@ function EventsSection() {
                   <div style={{ position: 'absolute', top: 'calc(100% + 6px)', right: 0, background: '#fff', border: '1px solid var(--border)', borderRadius: 10, boxShadow: '0 8px 24px rgba(0,0,0,0.12)', overflow: 'hidden', zIndex: 20, minWidth: 200 }}
                     onMouseLeave={() => setCalOpen(false)}>
                     {[
-                      { label: 'Google Agenda', icon: 'G', action: () => { downloadICS(); setCalOpen(false) } },
+                      { label: 'Google Agenda', icon: 'G', action: () => { if (nextForrobodo) window.open(googleCalendarUrl(nextForrobodo), '_blank', 'noopener,noreferrer'); setCalOpen(false) } },
                       { label: 'Apple Calendar', icon: '🍎', action: () => { downloadICS(); setCalOpen(false) } },
                       { label: 'Outlook', icon: '📧', action: () => { downloadICS(); setCalOpen(false) } },
                       { label: 'Autres (.ics)', icon: '↓', action: () => { downloadICS(); setCalOpen(false) } },

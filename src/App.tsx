@@ -17,6 +17,7 @@ import forrobodo20ansImg  from '@/imports/WhatsApp_Image_2026-08-19_at_11.51.20.
 import forrobodoSaisonImg from '@/imports/IMG_1387.png'
 import ramonVieiraImg     from '@/imports/Forrobodo_Ramon_Vieira.jpeg'
 import courseDanseImg    from '@/imports/WhatsApp_Image_2026-08-18_at_17.04.07.jpeg'
+import appleCalendarImg  from '@/imports/image-5.png'
 
 // ─── types & data ──────────────────────────────────────────────────────────────
 
@@ -295,25 +296,6 @@ const CAT_BG: Record<string, string> = {
 }
 
 // ─── helpers ───────────────────────────────────────────────────────────────────
-
-// Google Calendar n'a pas d'équivalent "fichier .ics" : on ouvre directement
-// son URL de création d'événement dans un nouvel onglet, sans téléchargement
-// (contrairement à Apple Calendar / Outlook, qui eux consomment un .ics et
-// s'ouvrent via l'appli associée aux .ics par défaut sur l'appareil).
-function googleCalendarUrl(evt: Evt) {
-  const [y, m, d] = evt.dateSort.split('-').map(Number)
-  const start = new Date(y, m - 1, d)
-  const end = new Date(y, m - 1, d + 1)
-  const fmt = (dt: Date) => `${dt.getFullYear()}${String(dt.getMonth() + 1).padStart(2, '0')}${String(dt.getDate()).padStart(2, '0')}`
-  const params = new URLSearchParams({
-    action: 'TEMPLATE',
-    text: evt.title + (evt.subtitle ? ' — ' + evt.subtitle : ''),
-    dates: `${fmt(start)}/${fmt(end)}`,
-    details: evt.description,
-    location: evt.venue,
-  })
-  return `https://calendar.google.com/calendar/render?${params.toString()}`
-}
 
 function CatPill({ cat }: { cat: string }) {
   const color = CAT_COLOR[cat] || '#e09010'
@@ -797,7 +779,6 @@ function EventsSection() {
       })
     : upcoming
   const extraForrobodo = upcoming.filter(e => e.title === 'Forrobodó' && e.id >= 302).slice(1)
-  const nextForrobodo = upcoming.find(e => e.title === 'Forrobodó' || e.title === 'Forrobodó Spécial 20 ans')
 
   function downloadICS() {
     const fbEvents = upcoming.filter(e => e.title === 'Forrobodó' || e.title === 'Forrobodó Spécial 20 ans')
@@ -889,25 +870,61 @@ function EventsSection() {
                   Ajouter au calendrier
                   <svg width="9" height="9" viewBox="0 0 10 10" fill="none" style={{ transition: 'transform 0.2s', transform: calOpen ? 'rotate(180deg)' : 'none' }}><path d="M2 3l3 3 3-3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
                 </button>
-                {calOpen && (
-                  <div style={{ position: 'absolute', top: 'calc(100% + 6px)', right: 0, background: '#fff', border: '1px solid var(--border)', borderRadius: 10, boxShadow: '0 8px 24px rgba(0,0,0,0.12)', overflow: 'hidden', zIndex: 20, minWidth: 200 }}
-                    onMouseLeave={() => setCalOpen(false)}>
-                    {[
-                      { label: 'Google Agenda', icon: 'G', action: () => { if (nextForrobodo) window.open(googleCalendarUrl(nextForrobodo), '_blank', 'noopener,noreferrer'); setCalOpen(false) } },
-                      { label: 'Apple Calendar', icon: '🍎', action: () => { downloadICS(); setCalOpen(false) } },
-                      { label: 'Outlook', icon: '📧', action: () => { downloadICS(); setCalOpen(false) } },
-                      { label: 'Autres (.ics)', icon: '↓', action: () => { downloadICS(); setCalOpen(false) } },
-                    ].map(item => (
-                      <button key={item.label} onClick={item.action}
-                        style={{ display: 'flex', alignItems: 'center', gap: 10, width: '100%', padding: '10px 16px', background: 'transparent', border: 'none', cursor: 'pointer', fontFamily: "'Inter', sans-serif", fontSize: 13, color: 'var(--surface-foreground)', textAlign: 'left', transition: 'background 0.15s' }}
-                        onMouseEnter={e => (e.currentTarget.style.background = '#fce8ee')}
-                        onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}>
-                        <span style={{ width: 20, textAlign: 'center', fontSize: item.icon === 'G' ? 12 : 14, fontWeight: item.icon === 'G' ? 700 : 400, color: item.icon === 'G' ? '#4285F4' : 'inherit' }}>{item.icon}</span>
-                        {item.label}
-                      </button>
-                    ))}
-                  </div>
-                )}
+                {calOpen && (() => {
+                  const nextFb = extraForrobodo[0]
+                  const gcUrl = nextFb ? (() => {
+                    const d = nextFb.dateSort.replace(/-/g,'')
+                    const nextDay = new Date(nextFb.dateSort); nextDay.setDate(nextDay.getDate()+1)
+                    const d2 = nextDay.toISOString().slice(0,10).replace(/-/g,'')
+                    const title = nextFb.title + (nextFb.subtitle ? ' — ' + nextFb.subtitle : '')
+                    return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${d}/${d2}&details=${encodeURIComponent(nextFb.description)}&location=${encodeURIComponent(nextFb.venue)}`
+                  })() : 'https://calendar.google.com/calendar/render'
+                  const items: { label: string; sub: string; icon: React.ReactNode; action: () => void }[] = [
+                    { label: 'Google Agenda', sub: 'Prochain Forrobodó', icon: (
+                      <svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                        <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                        <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/>
+                        <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                      </svg>
+                    ), action: () => { window.open(gcUrl, '_blank'); setCalOpen(false) } },
+                    { label: 'Apple Calendar', sub: 'Fichier .ics', icon: (
+                      <img src={appleCalendarImg} width="18" height="18" style={{ borderRadius: 4, display: 'block' }} alt="Apple Calendar"/>
+                    ), action: () => { downloadICS(); setCalOpen(false) } },
+                    { label: 'Outlook', sub: 'Fichier .ics', icon: (
+                      <svg width="18" height="18" viewBox="0 0 23 23" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="1" y="1" width="10" height="10" fill="#F25022"/>
+                        <rect x="12" y="1" width="10" height="10" fill="#7FBA00"/>
+                        <rect x="1" y="12" width="10" height="10" fill="#00A4EF"/>
+                        <rect x="12" y="12" width="10" height="10" fill="#FFB900"/>
+                      </svg>
+                    ), action: () => { downloadICS(); setCalOpen(false) } },
+                    { label: 'Autres / .ics', sub: 'Format universel', icon: (
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#666" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                        <polyline points="7 10 12 15 17 10"/>
+                        <line x1="12" y1="15" x2="12" y2="3"/>
+                      </svg>
+                    ), action: () => { downloadICS(); setCalOpen(false) } },
+                  ]
+                  return (
+                    <div style={{ position: 'absolute', top: 'calc(100% + 6px)', right: 0, background: '#fff', border: '1px solid var(--border)', borderRadius: 10, boxShadow: '0 8px 24px rgba(0,0,0,0.12)', overflow: 'hidden', zIndex: 20, minWidth: 220 }}
+                      onMouseLeave={() => setCalOpen(false)}>
+                      {items.map(item => (
+                        <button key={item.label} onClick={item.action}
+                          style={{ display: 'flex', alignItems: 'center', gap: 10, width: '100%', padding: '10px 16px', background: 'transparent', border: 'none', cursor: 'pointer', textAlign: 'left', transition: 'background 0.15s' }}
+                          onMouseEnter={e => (e.currentTarget.style.background = '#fce8ee')}
+                          onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}>
+                          <span style={{ flexShrink: 0 }}>{item.icon}</span>
+                          <span>
+                            <span style={{ display: 'block', fontFamily: "'Inter', sans-serif", fontSize: 13, color: 'var(--surface-foreground)', fontWeight: 500 }}>{item.label}</span>
+                            <span style={{ display: 'block', fontFamily: "'DM Mono', monospace", fontSize: 9, color: 'var(--muted-foreground)', letterSpacing: '0.06em' }}>{item.sub}</span>
+                          </span>
+                        </button>
+                      ))}
+                    </div>
+                  )
+                })()}
               </div>
             </div>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>

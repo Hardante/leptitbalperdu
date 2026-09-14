@@ -18,6 +18,7 @@ import forrobodoSaisonImg from '@/imports/IMG_1387.png'
 import ramonVieiraImg     from '@/imports/Forrobodo_Ramon_Vieira.jpeg'
 import courseDanseImg    from '@/imports/WhatsApp_Image_2026-08-18_at_17.04.07.jpeg'
 import appleCalendarImg  from '@/imports/image-5.png'
+import atelierJeudiImg   from '@/imports/8d5ac77f-9a21-471e-8aac-6cf708edfe1b.jpeg'
 
 // ─── types & data ──────────────────────────────────────────────────────────────
 
@@ -220,6 +221,20 @@ const EVENTS: Evt[] = [
     ticketUrl: 'https://www.helloasso.com/associations/le-p-tit-bal-perdu/evenements/forrobodo-special-20-ans-du-p-tit-bal-trio-exactamente',
     description: "Soirée d'anniversaire exceptionnelle avec le Trio Exactamente. Initiation à la danse à 21h avec Marion Lima, participation de la chorale, surprises… PDS até 2h !",
   },
+  // Ateliers du Jeudi — cycle inter/avancé
+  ...[
+    { id: 401, date: 'Jeudi 17 septembre 2026', dateSort: '2026-09-17' },
+    { id: 402, date: 'Jeudi 24 septembre 2026', dateSort: '2026-09-24' },
+    { id: 403, date: 'Jeudi 1 octobre 2026',       dateSort: '2026-10-01' },
+    { id: 404, date: 'Jeudi 8 octobre 2026',       dateSort: '2026-10-08' },
+  ].map(({ id, date, dateSort }) => ({
+    id, title: "Atelier du Jeudi", subtitle: 'Intermédiaire-avancé',
+    date, dateSort, time: '21h – 22h30',
+    venue: 'Studio des Rigoles, 46 rue des Rigoles, 75020',
+    category: 'Cours & Ateliers' as const,
+    image: atelierJeudiImg,
+    description: "Cycle intensif inter/avancé avec Marion Lima. Au programme : posture, musicalité, figures complexes, torsions. Chaque jeudi un thème différent pour progresser en profondeur.",
+  })),
   {
     id: 301,
     title: 'Forrobodó',

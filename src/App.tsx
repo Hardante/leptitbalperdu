@@ -224,16 +224,17 @@ const EVENTS: Evt[] = [
   },
   // Ateliers du Jeudi — cycle inter/avancé
   ...[
-    { id: 401, date: 'Jeudi 17 septembre 2026', dateSort: '2026-09-17' },
-    { id: 402, date: 'Jeudi 24 septembre 2026', dateSort: '2026-09-24' },
-    { id: 403, date: 'Jeudi 1 octobre 2026',       dateSort: '2026-10-01' },
-    { id: 404, date: 'Jeudi 8 octobre 2026',       dateSort: '2026-10-08' },
-  ].map(({ id, date, dateSort }) => ({
+    { id: 401, date: 'Jeudi 17 septembre 2026', dateSort: '2026-09-17', ticketUrl: 'https://www.ritmobrasil.org/e_2026-09/ateliers-forro-jeudi-cycle-inter-avance.69gsbrqg' },
+    { id: 402, date: 'Jeudi 24 septembre 2026', dateSort: '2026-09-24', ticketUrl: 'https://www.ritmobrasil.org/e_2026-09/ateliers-forro-jeudi-cycle-inter-avance.r2mdvvb7' },
+    { id: 403, date: 'Jeudi 1 octobre 2026',    dateSort: '2026-10-01', ticketUrl: 'https://www.ritmobrasil.org/e_2026-10/ateliers-forro-jeudi-cycle-inter-avance.fss69d5m' },
+    { id: 404, date: 'Jeudi 8 octobre 2026',    dateSort: '2026-10-08', ticketUrl: 'https://www.ritmobrasil.org/e_2026-10/ateliers-forro-jeudi-cycle-inter-avance.v6qkmfxc' },
+  ].map(({ id, date, dateSort, ticketUrl }: { id: number; date: string; dateSort: string; ticketUrl?: string }) => ({
     id, title: "Atelier du Jeudi", subtitle: 'Intermédiaire-avancé',
     date, dateSort, time: '21h – 22h30',
     venue: 'Studio des Rigoles, 46 rue des Rigoles, 75020',
     category: 'Cours & Ateliers' as const,
     image: atelierJeudiImg,
+    ticketUrl,
     description: "Cycle intensif inter/avancé avec Marion Lima. Au programme : posture, musicalité, figures complexes, torsions. Chaque jeudi un thème différent pour progresser en profondeur.",
   })),
   {

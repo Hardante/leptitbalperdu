@@ -253,7 +253,7 @@ const EVENTS: Evt[] = [
   },
   // Forrobodó saison 2026-27 (sous réserve de changement)
   ...[
-    { id: 302, date: 'Vendredi 23 octobre 2026',   dateSort: '2026-10-23', ticketUrl: 'https://www.helloasso.com/associations/le-p-tit-bal-perdu/evenements/forrobodo-passeurs-de-sons-avec-dj-xelelu-dj-nelsim', img: forrobodo23OctImg },
+    { id: 302, date: 'Vendredi 23 octobre 2026',   dateSort: '2026-10-23', ticketUrl: 'https://www.helloasso.com/associations/le-p-tit-bal-perdu/evenements/forrobodo-passeurs-de-sons-avec-dj-xelelu-dj-nelsim', img: forrobodo23OctImg, sub: 'DJ Xeleleu & DJ Nelsim' },
     { id: 303, date: 'Vendredi 27 novembre 2026',  dateSort: '2026-11-27' },
     { id: 304, date: 'Vendredi 11 décembre 2026',  dateSort: '2026-12-11' },
     { id: 305, date: 'Vendredi 8 janvier 2027',    dateSort: '2027-01-08' },
@@ -268,10 +268,10 @@ const EVENTS: Evt[] = [
     { id: 314, date: 'Vendredi 28 mai 2027',       dateSort: '2027-05-28' },
     { id: 315, date: 'Vendredi 11 juin 2027',      dateSort: '2027-06-11' },
     { id: 316, date: 'Vendredi 25 juin 2027',      dateSort: '2027-06-25' },
-  ].map(({ id, date, dateSort, ticketUrl, img }: { id: number; date: string; dateSort: string; ticketUrl?: string; img?: string }) => ({
+  ].map(({ id, date, dateSort, ticketUrl, img, sub }: { id: number; date: string; dateSort: string; ticketUrl?: string; img?: string; sub?: string }) => ({
     id,
     title: 'Forrobodó',
-    subtitle: 'Concert & DJ · Initiation danse',
+    subtitle: sub ?? 'Concert & DJ · Initiation danse',
     date,
     dateSort,
     time: '21h – 2h',

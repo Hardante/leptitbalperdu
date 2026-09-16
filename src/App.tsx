@@ -66,6 +66,7 @@ const EVENTS: Evt[] = [
     category: 'Cours & Ateliers',
     image: rentreeImg,
     tag: '1er cours gratuit',
+    ticketUrl: 'https://www.ritmobrasil.org/e_2026-09/portes-ouvertes-cours-forro-2026-27.tg79j6mv',
     description: "Portes ouvertes pour la rentrée ! Venez découvrir ou redécouvrir les cours de forró avec Marion Lima. Tous niveaux, débutants bienvenus. Premier cours offert pour les nouvelles personnes — les 15 & 17 septembre pour les mardis/jeudis, les 22 & 24 pour une 2e session.",
   },
   {
@@ -245,12 +246,12 @@ const EVENTS: Evt[] = [
     venue: 'Studio des Rigoles, 46 rue des Rigoles, 75020',
     category: 'Bals' as const,
     image: ramonVieiraImg,
+    ticketUrl: 'https://www.helloasso.com/associations/le-p-tit-bal-perdu/evenements/forrobodo-ao-vivo-ramon-vieira',
     description: "Ramon Vieira, figure emblématique du forró, réunit Gabriel Walsh et Mytho Roots pour une soirée exceptionnelle. Initiation à la danse à 21h avec Marion Lima. PDS até 2h !",
   },
   // Forrobodó saison 2026-27 (sous réserve de changement)
   ...[
-    { id: 302, date: 'Vendredi 23 octobre 2026',   dateSort: '2026-10-23' },
-    { id: 302, date: 'Vendredi 23 octobre 2026',   dateSort: '2026-10-23' },
+    { id: 302, date: 'Vendredi 23 octobre 2026',   dateSort: '2026-10-23', ticketUrl: 'https://www.helloasso.com/associations/le-p-tit-bal-perdu/evenements/forrobodo-passeurs-de-sons-avec-dj-xelelu-dj-nelsim' },
     { id: 303, date: 'Vendredi 27 novembre 2026',  dateSort: '2026-11-27' },
     { id: 304, date: 'Vendredi 11 décembre 2026',  dateSort: '2026-12-11' },
     { id: 305, date: 'Vendredi 8 janvier 2027',    dateSort: '2027-01-08' },
@@ -265,7 +266,7 @@ const EVENTS: Evt[] = [
     { id: 314, date: 'Vendredi 28 mai 2027',       dateSort: '2027-05-28' },
     { id: 315, date: 'Vendredi 11 juin 2027',      dateSort: '2027-06-11' },
     { id: 316, date: 'Vendredi 25 juin 2027',      dateSort: '2027-06-25' },
-  ].map(({ id, date, dateSort }) => ({
+  ].map(({ id, date, dateSort, ticketUrl }: { id: number; date: string; dateSort: string; ticketUrl?: string }) => ({
     id,
     title: 'Forrobodó',
     subtitle: 'Concert & DJ · Initiation danse',
@@ -276,6 +277,7 @@ const EVENTS: Evt[] = [
     category: 'Bals' as const,
     image: forrobodoSaisonImg,
     tag: 'Saison 2026-27',
+    ticketUrl,
     description: "Le cœur de l'association : deux vendredis par mois, le bal réunit danseurs et curieux autour d'un concert live et d'un DJ. Initiation à 21h — aucune expérience requise.",
   })),
   {

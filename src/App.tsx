@@ -570,7 +570,7 @@ function StatsSection() {
 function EventCardGrid({ evt }: { evt: Evt }) {
   const [hov, setHov] = useState(false)
   const color = CAT_COLOR[evt.category] || 'var(--primary)'
-  const isSaison = evt.id >= 302 && evt.id <= 316
+  const isSaison = evt.id >= 303 && evt.id <= 316
 
   return (
     <article
@@ -790,14 +790,14 @@ function EventsSection() {
   const seenForrobodo = { seen: false }
   const gridUpcoming = view === 'grille'
     ? upcoming.filter(e => {
-        if (e.title === 'Forrobodó' && e.id >= 302) {
+        if (e.title === 'Forrobodó' && e.id >= 303) {
           if (seenForrobodo.seen) return false
           seenForrobodo.seen = true
         }
         return true
       })
     : upcoming
-  const extraForrobodo = upcoming.filter(e => e.title === 'Forrobodó' && e.id >= 302).slice(1)
+  const extraForrobodo = upcoming.filter(e => e.title === 'Forrobodó' && e.id >= 303).slice(1)
 
   function downloadICS() {
     const fbEvents = upcoming.filter(e => e.title === 'Forrobodó' || e.title === 'Forrobodó Spécial 20 ans')

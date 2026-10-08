@@ -20,6 +20,9 @@ import courseDanseImg    from '@/imports/WhatsApp_Image_2026-08-18_at_17.04.07.j
 import appleCalendarImg  from '@/imports/image-5.png'
 import atelierJeudiImg   from '@/imports/8d5ac77f-9a21-471e-8aac-6cf708edfe1b.jpeg'
 import forrobodo23OctImg from '@/imports/forrobodo-23-oct.jpeg'
+import atelierTousNiveauxImg from '@/imports/ateliers-jeudi-tous-niveaux.png'
+import forrobodoTatiVerasImg from '@/imports/forrobodo-tati-veras.png'
+import forrobodoDesabafoImg from '@/imports/forrobodo-desabafo-no-pe.png'
 
 // ─── types & data ──────────────────────────────────────────────────────────────
 
@@ -238,6 +241,21 @@ const EVENTS: Evt[] = [
     ticketUrl,
     description: "Cycle intensif inter/avancé avec Marion Lima. Au programme : posture, musicalité, figures complexes, torsions. Chaque jeudi un thème différent pour progresser en profondeur.",
   })),
+  // Ateliers du Jeudi — cycle tous niveaux
+  ...[
+    { id: 405, date: 'Jeudi 15 octobre 2026', dateSort: '2026-10-15', ticketUrl: 'https://www.ritmobrasil.org/e_2026-10/ateliers-forro-jeudi-tous-niveaux.fvhgkwms', theme: "Danser à deux : l'abraço et la connexion" },
+    { id: 406, date: 'Jeudi 22 octobre 2026', dateSort: '2026-10-22', ticketUrl: 'https://www.ritmobrasil.org/e_2026-10/ateliers-forro-jeudi-tous-niveaux.pzvvksrj', theme: "Gérer l'espace dans le duo et dans le bal" },
+    { id: 407, date: 'Jeudi 29 octobre 2026', dateSort: '2026-10-29', ticketUrl: 'https://www.ritmobrasil.org/e_2026-10/ateliers-forro-jeudi-tous-niveaux.xgjmy7q6', theme: 'Trouver et interpréter les pauses musicales' },
+    { id: 408, date: 'Jeudi 5 novembre 2026',  dateSort: '2026-11-05', ticketUrl: 'https://www.ritmobrasil.org/e_2026-11/ateliers-forro-jeudi-tous-niveaux.ynfxc6mc', theme: 'Déplacements & pernas' },
+  ].map(({ id, date, dateSort, ticketUrl, theme }) => ({
+    id, title: "Atelier du Jeudi", subtitle: `Tous niveaux · ${theme}`,
+    date, dateSort, time: '21h – 22h30',
+    venue: 'Studio des Rigoles, 46 rue des Rigoles, 75020',
+    category: 'Cours & Ateliers' as const,
+    image: atelierTousNiveauxImg,
+    ticketUrl,
+    description: `Cycle tous niveaux avec Marion Lima. ${theme}.`,
+  })),
   {
     id: 301,
     title: 'Forrobodó',
@@ -254,8 +272,8 @@ const EVENTS: Evt[] = [
   // Forrobodó saison 2026-27 (sous réserve de changement)
   ...[
     { id: 302, date: 'Vendredi 23 octobre 2026',   dateSort: '2026-10-23', ticketUrl: 'https://www.helloasso.com/associations/le-p-tit-bal-perdu/evenements/forrobodo-passeurs-de-sons-avec-dj-xelelu-dj-nelsim', img: forrobodo23OctImg, sub: 'DJ Xeleleu & DJ Nelsim' },
-    { id: 303, date: 'Vendredi 27 novembre 2026',  dateSort: '2026-11-27' },
-    { id: 304, date: 'Vendredi 11 décembre 2026',  dateSort: '2026-12-11' },
+    { id: 303, date: 'Vendredi 27 novembre 2026',  dateSort: '2026-11-27', ticketUrl: 'https://www.helloasso.com/associations/le-p-tit-bal-perdu/evenements/forrobodo-ao-vivo-tati-veras', img: forrobodoTatiVerasImg, sub: 'Tati Veras en trio avec Gabriel Serrano & Sabatuk' },
+    { id: 304, date: 'Vendredi 11 décembre 2026',  dateSort: '2026-12-11', ticketUrl: 'https://www.helloasso.com/associations/le-p-tit-bal-perdu/evenements/forrobodo-ao-vivo-desabafo-no-pe', img: forrobodoDesabafoImg, sub: 'Desabafo no Pé' },
     { id: 305, date: 'Vendredi 8 janvier 2027',    dateSort: '2027-01-08' },
     { id: 306, date: 'Vendredi 22 janvier 2027',   dateSort: '2027-01-22' },
     { id: 307, date: 'Vendredi 5 février 2027',    dateSort: '2027-02-05' },
@@ -570,7 +588,7 @@ function StatsSection() {
 function EventCardGrid({ evt }: { evt: Evt }) {
   const [hov, setHov] = useState(false)
   const color = CAT_COLOR[evt.category] || 'var(--primary)'
-  const isSaison = evt.id >= 303 && evt.id <= 316
+  const isSaison = evt.id >= 305 && evt.id <= 316
 
   return (
     <article
@@ -790,14 +808,14 @@ function EventsSection() {
   const seenForrobodo = { seen: false }
   const gridUpcoming = view === 'grille'
     ? upcoming.filter(e => {
-        if (e.title === 'Forrobodó' && e.id >= 303) {
+        if (e.title === 'Forrobodó' && e.id >= 305) {
           if (seenForrobodo.seen) return false
           seenForrobodo.seen = true
         }
         return true
       })
     : upcoming
-  const extraForrobodo = upcoming.filter(e => e.title === 'Forrobodó' && e.id >= 303).slice(1)
+  const extraForrobodo = upcoming.filter(e => e.title === 'Forrobodó' && e.id >= 305).slice(1)
 
   function downloadICS() {
     const fbEvents = upcoming.filter(e => e.title === 'Forrobodó' || e.title === 'Forrobodó Spécial 20 ans')

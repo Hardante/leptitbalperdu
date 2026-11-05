@@ -9,7 +9,6 @@ import event1Img        from '@/imports/Event_1_.jpeg'
 import event2Img        from '@/imports/Event_2.jpeg'
 import event3Img        from '@/imports/Event_3.jpeg'
 import festJuninaImg    from '@/imports/IMG_6835.jpg'
-import marathonSaveImg  from '@/imports/WhatsApp_Image_2026-08-19_at_15.31.12.jpeg'
 import kiosquesPosterImg from '@/imports/WhatsApp_Image_2026-08-19_at_15.18.41.jpeg'
 import portesOuvertesImg  from '@/imports/WhatsApp_Image_2026-08-18_at_16.53.50.jpeg'
 import rentreeImg         from '@/imports/WhatsApp_Image_2026-08-21_at_10.31.44.jpeg'
@@ -21,8 +20,13 @@ import appleCalendarImg  from '@/imports/image-5.png'
 import atelierJeudiImg   from '@/imports/8d5ac77f-9a21-471e-8aac-6cf708edfe1b.jpeg'
 import forrobodo23OctImg from '@/imports/forrobodo-23-oct.jpeg'
 import atelierTousNiveauxImg from '@/imports/ateliers-jeudi-tous-niveaux.png'
-import forrobodoTatiVerasImg from '@/imports/forrobodo-tati-veras.png'
-import forrobodoDesabafoImg from '@/imports/forrobodo-desabafo-no-pe.png'
+import atelierCycle3MythoImg from '@/imports/atelier-cycle-3-mytho.jpg'
+import ateliersCycle3Img from '@/imports/ateliers-jeudi-cycle-3.jpg'
+import coursCommunImg from '@/imports/cours-commun-fin-annee.jpg'
+import esquentaNaoParaImg from '@/imports/esquenta-nao-para.jpg'
+import naoPara2026Img from '@/imports/nao-para-2026.jpg'
+import forrobodoTatiVeras2026Img from '@/imports/forrobodo-tati-veras-2026.png'
+import forrobodoDesabafo2026Img from '@/imports/forrobodo-desabafo-no-pe-2026.png'
 
 // ─── types & data ──────────────────────────────────────────────────────────────
 
@@ -256,6 +260,66 @@ const EVENTS: Evt[] = [
     ticketUrl,
     description: `Cycle tous niveaux avec Marion Lima. ${theme}.`,
   })),
+  // Ateliers du Jeudi — cycle 3 tous niveaux
+  ...[
+    {
+      id: 409,
+      date: 'Jeudi 19 novembre 2026',
+      dateSort: '2026-11-19',
+      ticketUrl: 'https://www.ritmobrasil.org/e_2026-11/ateliers-tous-niveaux-cycle-rythmes-ao.hkpv99fd',
+      theme: 'Les rythmes du forró avec Mytho Roots à la zabumba en live',
+      img: atelierCycle3MythoImg,
+    },
+    {
+      id: 410,
+      date: 'Jeudi 26 novembre 2026',
+      dateSort: '2026-11-26',
+      ticketUrl: 'https://www.ritmobrasil.org/e_2026-11/ateliers-tous-niveaux-cycle-rythmes-corporels.9n8c5q68',
+      theme: 'Les rythmes corporels',
+      img: ateliersCycle3Img,
+    },
+    {
+      id: 411,
+      date: 'Jeudi 3 décembre 2026',
+      dateSort: '2026-12-03',
+      ticketUrl: 'https://www.ritmobrasil.org/e_2026-12/ateliers-tous-niveaux-cycle-variations-bases.jhkwsv5z',
+      theme: 'Variations des bases',
+      img: ateliersCycle3Img,
+    },
+    {
+      id: 412,
+      date: 'Jeudi 10 décembre 2026',
+      dateSort: '2026-12-10',
+      ticketUrl: 'https://www.ritmobrasil.org/e_2026-12/ateliers-tous-niveaux-cycle-torsions.5q9gttqw',
+      theme: 'Les torsions',
+      img: ateliersCycle3Img,
+    },
+  ].map(({ id, date, dateSort, ticketUrl, theme, img }) => ({
+    id,
+    title: "Atelier du Jeudi",
+    subtitle: `Cycle 3 tous niveaux · ${theme}`,
+    date,
+    dateSort,
+    time: '21h – 22h30',
+    venue: 'Studio des Rigoles, 46 rue des Rigoles, 75020',
+    category: 'Cours & Ateliers' as const,
+    image: img,
+    ticketUrl,
+    description: `Cycle 3 tous niveaux avec Marion Lima. ${theme}.`,
+  })),
+  {
+    id: 501,
+    title: 'Esquenta Não Para',
+    subtitle: 'The night before Não Para · Dress code noir & blanc',
+    date: 'Jeudi 12 novembre 2026',
+    dateSort: '2026-11-12',
+    time: 'Soirée',
+    venue: 'Studio des Rigoles, 46 rue des Rigoles, 75020',
+    category: 'Bals',
+    image: esquentaNaoParaImg,
+    ticketUrl: 'https://www.ritmobrasil.org/e_2026-11/esquenta-nao-para-nao-para-nao.ctcwzbcg',
+    description: "L'Esquenta ouvre les festivités la veille du marathon Não Para. Une soirée de chauffe en noir et blanc pour entrer dans la danse.",
+  },
   {
     id: 301,
     title: 'Forrobodó',
@@ -272,8 +336,8 @@ const EVENTS: Evt[] = [
   // Forrobodó saison 2026-27 (sous réserve de changement)
   ...[
     { id: 302, date: 'Vendredi 23 octobre 2026',   dateSort: '2026-10-23', ticketUrl: 'https://www.helloasso.com/associations/le-p-tit-bal-perdu/evenements/forrobodo-passeurs-de-sons-avec-dj-xelelu-dj-nelsim', img: forrobodo23OctImg, sub: 'DJ Xeleleu & DJ Nelsim' },
-    { id: 303, date: 'Vendredi 27 novembre 2026',  dateSort: '2026-11-27', ticketUrl: 'https://www.helloasso.com/associations/le-p-tit-bal-perdu/evenements/forrobodo-ao-vivo-tati-veras', img: forrobodoTatiVerasImg, sub: 'Tati Veras en trio avec Gabriel Serrano & Sabatuk' },
-    { id: 304, date: 'Vendredi 11 décembre 2026',  dateSort: '2026-12-11', ticketUrl: 'https://www.helloasso.com/associations/le-p-tit-bal-perdu/evenements/forrobodo-ao-vivo-desabafo-no-pe', img: forrobodoDesabafoImg, sub: 'Desabafo no Pé' },
+    { id: 303, date: 'Vendredi 27 novembre 2026',  dateSort: '2026-11-27', ticketUrl: 'https://www.helloasso.com/associations/le-p-tit-bal-perdu/evenements/forrobodo-ao-vivo-tati-veras', img: forrobodoTatiVeras2026Img, sub: 'Tati à Veras en trio avec Gabriel Serrano & Sabatuk' },
+    { id: 304, date: 'Vendredi 11 décembre 2026',  dateSort: '2026-12-11', ticketUrl: 'https://www.helloasso.com/associations/le-p-tit-bal-perdu/evenements/forrobodo-ao-vivo-desabafo-no-pe', img: forrobodoDesabafo2026Img, sub: 'Desabafo no Pé' },
     { id: 305, date: 'Vendredi 8 janvier 2027',    dateSort: '2027-01-08' },
     { id: 306, date: 'Vendredi 22 janvier 2027',   dateSort: '2027-01-22' },
     { id: 307, date: 'Vendredi 5 février 2027',    dateSort: '2027-02-05' },
@@ -302,17 +366,31 @@ const EVENTS: Evt[] = [
   })),
   {
     id: 8,
-    title: 'Forró & More Marathon',
-    subtitle: 'Não Para, Não Para, Não Para...',
-    date: '13 – 14 – 15 novembre 2026',
+    title: 'Não Para',
+    subtitle: 'Forró & More · Marathon de Paris',
+    date: '13 – 15 novembre 2026',
     dateSort: '2026-11-13',
     time: '48h continus',
     venue: 'Studio des Rigoles, 46 rue des Rigoles, 75020',
     category: 'Festivals',
-    image: marathonSaveImg,
-    tag: '20e Anniversaire',
-    ticketUrl: 'https://www.helloasso.com/associations/le-p-tit-bal-perdu/evenements/nao-para-nao-para-nao-para-4eme-marathon-de-paris',
+    image: naoPara2026Img,
+    tag: 'Complet',
+    ticketUrl: 'https://www.instagram.com/naopara48hforroparis',
     description: "Le grand marathon anniversaire : 48 heures de forró, de rencontres et de danse pour célébrer les 20 ans du P'tit Bal Perdu.",
+  },
+  {
+    id: 502,
+    title: "Cours commun de fin d'année",
+    subtitle: 'Spécial Noël · Tous niveaux',
+    date: 'Jeudi 17 décembre 2026',
+    dateSort: '2026-12-17',
+    time: '19h30 – minuit',
+    venue: 'Studio des Rigoles, 46 rue des Rigoles, 75020',
+    category: 'Cours & Ateliers',
+    image: coursCommunImg,
+    tag: 'Spécial Noël',
+    ticketUrl: 'https://www.ritmobrasil.org/e_2026-12/cours-commun-apero-forro.6rcypkf2',
+    description: "Un cours tous niveaux avec essentiellement du forró et une découverte des danses brésiliennes, suivi d'un apéro dansant de fin d'année.",
   },
 ]
 
